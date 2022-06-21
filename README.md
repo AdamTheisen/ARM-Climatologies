@@ -1,32 +1,10 @@
 # ARM-Climatologies
 
 ## Background
-The [Atmospheric Radiation Measurement User Facility](https://arm.gov/) (ARM) is a multi-laboratory U.S. Department of Energy (DOE) 
-scientific user facility and key contributor to national and international climate research efforts.  ARM operates three fixed and 
-three mobile facilities that operate all over the world (Turner and Ellingson 2016).  The Southern Great Plain (SGP) observatory in 
-Oklahoma is the most-extensive climate research facility in the world and has data dating back to 1993 (Sisterson et al 2016).  
-The North Slope of Alaska (NSA) observatory in Utquiavik, AK came online in 2003 (Verlinde et al 2016).  
-Eastern North Atlantic Observatory (ENA) site located in Graciosa Island, Azores came online in 2013.  
-Three ARM Mobile Facilities (AMF) travel around the world on 6-24 month deployments for the first two AMFs and roughly 5-year deployments 
-for the third mobile facility (Miller et al. 2016).  ARM has been the source for a number of climatology-related studies focues on aerosol 
-radiative properties (Andrews et al. 2011), surface cloud radiative effects (McFarlane, Long, Flaherty 2013), aerosol optical depth 
-(Michalsky et al. 2010), and others (Kollias et al. 2007, Dong et al. 2006) but to the author's knowledge, very little work has been 
-done on basic climatology of surface meteorology at the ARM fixed sites.  This repository will serve as the location to document ongoing 
-climatology efforts.
+The [Atmospheric Radiation Measurement User Facility](https://arm.gov/) (ARM) is a multi-laboratory U.S. Department of Energy (DOE) scientific user facility and key contributor to national and international climate research efforts.  ARM operates three fixed and three mobile facilities that operate all over the world (Turner and Ellingson 2016).  The Southern Great Plain (SGP) observatory in Oklahoma is the most-extensive climate research facility in the world and has data dating back to 1993 (Sisterson et al 2016).  The North Slope of Alaska (NSA) observatory in Utquiavik, AK came online in 2003 (Verlinde et al 2016).  Eastern North Atlantic Observatory (ENA) site located in Graciosa Island, Azores came online in 2013.  Three ARM Mobile Facilities (AMF) travel around the world on 6-24 month deployments for the first two AMFs and roughly 5-year deployments for the third mobile facility (Miller et al. 2016).  ARM has been the source for a number of climatology-related studies focues on aerosol radiative properties (Andrews et al. 2011), surface cloud radiative effects (McFarlane, Long, Flaherty 2013), aerosol optical depth (Michalsky et al. 2010), and others (Kollias et al. 2007, Dong et al. 2006) but to the author's knowledge, very little work has been done on basic climatology of surface meteorology at the ARM fixed sites.  This repository will serve as the location to document ongoing climatology efforts.
 
 ## Data Quality
-ARM applies basic quality control tests such as minimum, maximum, and delta tests to flag outliers (Table 1) (Peppler et al. 2016).  
-The results of these tests are stored in the data files in bit-packed quality control (QC) variables.  ARM employs instrument experts 
-, called instrument mentors, that oversee each instruments operations and ensure the quality of the data. These mentors work closely 
-with the ARM Data Quality (DQ) Office to monitor the data for any QC problems.  When found, these problems are communicated to site 
-operations and others as appropriate to work towards resolving the issues.  Once the problem has been resolved, a Data Quality Report 
-(DQR) is submitted that is visible in the [Data Discovery timeline](https://adc.arm.gov/discovery/#/results/id::nsametC1.b1_atmos_pressure_sfcmet_met_sfcmet?dataLevel=b1&showDetails=true) and accessible through a [webservice](https://code.arm.gov/docs/dqrws-examples/-/wikis/home).  
-These DQRs provide a quality category (Missing, Suspect, Incorrect, Note), date ranges, description, and more and can be applied to 
-additionally threshold the data.  The program (arm_climatology.py) in this repository uses the 
-[Atmospheric data Community Toolkit (ACT)](https://github.com/ARM-DOE/ACT) (Theisen et al. 2022) to download and add DQRs to the existing 
-quality control variables and tests.  In order to calculate the averages, all data flagged by QC variables and DQRs are excluded from the mean.  
-Additionally, the number of samples used in each average is also written out to the file.  No further QC is performed at this moment and it is assumed that the ARM data record is well-documented.  Data from this program are written out into csv files in the results folder and plots are 
-created with the plot_climatology.py program are available in the images directory.
+ARM applies basic quality control tests such as minimum, maximum, and delta tests to flag outliers (Table 1) (Peppler et al. 2016).  The results of these tests are stored in the data files in bit-packed quality control (QC) variables.  ARM employs instrument experts, called instrument mentors, that oversee each instruments operations and ensure the quality of the data. These mentors work closely with the ARM Data Quality (DQ) Office to monitor the data for any QC problems.  When found, these problems are communicated to site operations and others as appropriate to work towards resolving the issues.  Once the problem has been resolved, a Data Quality Report (DQR) is submitted that is visible in the [Data Discovery timeline](https://adc.arm.gov/discovery/#/results/id::nsametC1.b1_atmos_pressure_sfcmet_met_sfcmet?dataLevel=b1&showDetails=true) and accessible through a [webservice](https://code.arm.gov/docs/dqrws-examples/-/wikis/home).  These DQRs provide a quality category (Missing, Suspect, Incorrect, Note), date ranges, description, and more and can be applied to additionally threshold the data.  The program (arm_climatology.py) in this repository uses the [Atmospheric data Community Toolkit (ACT)](https://github.com/ARM-DOE/ACT) (Theisen et al. 2022) to download and add DQRs to the existing quality control variables and tests.  In order to calculate the averages, all data flagged by QC variables and DQRs are excluded from the mean.  Additionally, the number of samples used in each average is also written out to the file.  No further QC is performed at this moment and it is assumed that the ARM data record is well-documented.  Data from this program are written out into csv files in the results folder and plots are created with the plot_climatology.py program are available in the images directory.
 
 Table 1. Minimum, maximum, and delta thresholds for each fixed site based on the latest file headers as of June 21, 2022.
 | Site | Minimum | Maximum | Delta |
