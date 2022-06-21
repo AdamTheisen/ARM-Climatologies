@@ -15,12 +15,14 @@ Table 1. Minimum, maximum, and delta thresholds for each fixed site based on the
 
 ## Results
 ### North Slope of Alaska
-The NSA monthly temperatures (Fig. 1) show a notable period from 2014-2019 where the average temperatures over the winter were higher as compared to the data from 2005-2013.
+The NSA monthly temperatures (Fig. 1) show a notable period from 2014-2019 where the average temperatures over the winter were higher as compared to the data from 2005-2013.  This signature is also present in the NOAA Climate Reference Network (CRN) data (Fig. 2), aquired through ARM as well (NOOA Climate Reference Network).
 
 
 ![NSA Monthly Average Temperatures](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/nsametC1.b1_temp_mean_M.png)
 Figure 1. Monthly average temperatures for the NSA site.
 
+![NOOA CRN Monthly Average Temperatures](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/nsa60noaacrnX1.b1_temperature_M.png)
+Figure 1. Monthly average temperatures for the NOAA CRN site.
 
 ## References
 Andrews, E., Ogren, J. A., Bonasoni, P., Marinoni, A., Cuevas, E., Rodríguez, S., ... & Sheridan, P. (2011). Climatology of aerosol radiative properties in the free troposphere. Atmospheric Research, 102(4), 365-393.
