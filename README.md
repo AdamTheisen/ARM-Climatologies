@@ -1,4 +1,3 @@
-<div style="text-align: justify">
 # ARM-Climatologies
 
 ## Background
@@ -17,7 +16,6 @@ Table 1. Minimum, maximum, and delta thresholds for each fixed site based on the
 ## Results
 ### North Slope of Alaska
 
-</div>
 
 ## References
 Andrews, E., Ogren, J. A., Bonasoni, P., Marinoni, A., Cuevas, E., Rodríguez, S., ... & Sheridan, P. (2011). Climatology of aerosol radiative properties in the free troposphere. Atmospheric Research, 102(4), 365-393.
