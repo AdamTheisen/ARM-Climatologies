@@ -5,8 +5,10 @@ import numpy as np
 # Set up the datastream, variable name and averaging interval
 # Averaging interval based on xarray resample (M=Month, Y=Year)
 ds = 'nsametC1.b1'
+#ds = 'nsa60noaacrnX1.b1'
 variable = 'temp_mean'
-averaging = 'M'
+#variable = 'temperature'
+averaging = 'Y'
 site = ds[0:3]
 
 # Update this path to where your data are
@@ -21,7 +23,10 @@ for y in years:
     files.sort()
     obj = act.io.armfiles.read_netcdf(files)
     obj = act.qc.arm.add_dqr_to_qc(obj, variable=variable)
-    obj = obj.where(obj['qc_'+variable] == 0)
+    try:
+        obj = obj.where(obj['qc_'+variable] == 0)
+    except:
+        pass
 
     # Produce specified averages and print out to a file
     count = obj.resample(time=averaging, skipna=True).count()

@@ -31,11 +31,11 @@ display.axes[0].set_ylabel('(' + units + ')')
 # and less than 334 days for yearly averages
 if averaging == 'M':
     idx = np.where(obj['n_samples'] < 28 * 24 * 60)
-    plt.text(1.0, -0.075, 'Black Dots = < 28 days used in average', transform=display.axes[0].transAxes,
+    plt.text(1.0, -0.1, 'Black Dots = < 28 days used in average', transform=display.axes[0].transAxes,
              horizontalalignment='right')
 if averaging == 'Y':
     idx = np.where(obj['n_samples'] < 334 * 24 * 60)
-    plt.text(1.0, -0.075, 'Black Dots = < 331 days used in average', transform=display.axes[0].transAxes,
+    plt.text(1.0, -0.1, 'Black Dots = < 331 days used in average', transform=display.axes[0].transAxes,
              horizontalalignment='right')
 display.axes[0].plot(obj['time'].values[idx], obj['mean'].values[idx], 'ko')
 

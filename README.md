@@ -15,7 +15,11 @@ Table 1. Minimum, maximum, and delta thresholds for each fixed site based on the
 
 ## Results
 ### North Slope of Alaska
+The NSA monthly temperatures (Fig. 1) show a notable period from 2014-2019 where the average temperatures over the winter were higher as compared to the data from 2005-2013.
 
+
+![NSA Monthly Average Temperatures](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/nsametC1.b1_temp_mean_M.png)
+Figure 1. Monthly average temperatures for the NSA site.
 
 
 ## References
