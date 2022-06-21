@@ -3,12 +3,13 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import numpy as np
 import pandas as pd
+import scipy
 
 
 ds = 'nsametC1.b1'
-ds = 'nsa60noaacrnX1.b1'
+#ds = 'nsa60noaacrnX1.b1'
 variable = 'temp_mean'
-variable = 'temperature'
+#variable = 'temperature'
 averaging = 'Y'
 units = 'degC'
 
@@ -44,7 +45,11 @@ if averaging == 'Y':
 
 display.axes[0].xaxis.set_major_formatter(myFmt)
 display.axes[0].plot(obj['time'].values[idx], obj['mean'].values[idx], 'ko')
+display.axes[0].grid(axis='y')
 
+#seconds = (pd.to_datetime(obj['time'].values) - pd.Timestamp("1970-01-01")) // pd.Timedelta('1s')
+#result = scipy.stats.linregress(seconds, obj['mean'].values)
+#display.axes[0].plot(obj['time'].values, result.intercept + result.slope * seconds)
 
 imagename = './images/' + ds + '_' + variable + '_' + averaging + '.png'
 plt.tight_layout()
