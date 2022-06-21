@@ -15,14 +15,16 @@ Table 1. Minimum, maximum, and delta thresholds for each fixed site based on the
 
 ## Results
 ### North Slope of Alaska
-The NSA monthly temperatures (Fig. 1) show a notable period from 2014-2019 where the average temperatures over the winter were higher as compared to the data from 2005-2013.  This signature is also present in the NOAA Climate Reference Network (CRN) data (Fig. 2), aquired through ARM as well (NOOA Climate Reference Network).
+The NSA monthly temperatures (Fig. 1) show a notable period from 2014-2019 where the average temperatures over the winter were higher as compared to the data from 2005-2013.  This signature is also present in the NOAA Climate Reference Network (CRN) data (Fig. 2), aquired through ARM as well (NOOA Climate Reference Network).  It both datasets, here was a significant decrease in the monthly averages during the 2019-2020 winter.  In Figures 1 and 2, the larger black dot indicate months where there were less than 25 days worth of data used to produce that average and as such likely has some bias.  Data for these periods can be found in the [results](https://github.com/AdamTheisen/ARM-Climatologies/tree/main/results) area of this repository.
 
 
 ![NSA Monthly Average Temperatures](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/nsametC1.b1_temp_mean_M.png)
 Figure 1. Monthly average temperatures for the NSA site.
 
 ![NOOA CRN Monthly Average Temperatures](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/nsa60noaacrnX1.b1_temperature_M.png)
-Figure 1. Monthly average temperatures for the NOAA CRN site.
+Figure 2. Monthly average temperatures for the NOAA CRN site. Note, it is a slightly different time range from Figure 1.
+
+
 
 ## References
 Andrews, E., Ogren, J. A., Bonasoni, P., Marinoni, A., Cuevas, E., Rodríguez, S., ... & Sheridan, P. (2011). Climatology of aerosol radiative properties in the free troposphere. Atmospheric Research, 102(4), 365-393.
