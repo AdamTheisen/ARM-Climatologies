@@ -6,8 +6,10 @@ import pandas as pd
 
 
 ds = 'nsametC1.b1'
+ds = 'nsa60noaacrnX1.b1'
 variable = 'temp_mean'
-averaging = 'M'
+variable = 'temperature'
+averaging = 'Y'
 units = 'degC'
 
 filename = './results/' + ds + '_' + variable + '_' + averaging + '.csv'
@@ -30,12 +32,14 @@ display.axes[0].set_ylabel('(' + units + ')')
 # Highlight samples that have less than 28 days worth of samples for monthly
 # and less than 334 days for yearly averages
 if averaging == 'M':
-    idx = np.where(obj['n_samples'] < 28 * 24 * 60)
-    plt.text(1.0, -0.1, 'Black Dots = < 28 days used in average', transform=display.axes[0].transAxes,
+    #idx = np.where(obj['n_samples'] < 28 * 24 * 60)
+    idx = np.where(obj['n_samples'] < 25 * 24) # For hourly averaged data
+    plt.text(1.0, -0.1, 'Black Dots = < 25 days used in average', transform=display.axes[0].transAxes,
              horizontalalignment='right')
 if averaging == 'Y':
-    idx = np.where(obj['n_samples'] < 334 * 24 * 60)
-    plt.text(1.0, -0.1, 'Black Dots = < 331 days used in average', transform=display.axes[0].transAxes,
+    #idx = np.where(obj['n_samples'] < 334 * 24 * 60)
+    idx = np.where(obj['n_samples'] < 334 * 24) # For hourly averaged data
+    plt.text(1.0, -0.1, 'Black Dots = < 334 days used in average', transform=display.axes[0].transAxes,
              horizontalalignment='right')
 display.axes[0].plot(obj['time'].values[idx], obj['mean'].values[idx], 'ko')
 

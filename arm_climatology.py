@@ -5,9 +5,9 @@ import numpy as np
 # Set up the datastream, variable name and averaging interval
 # Averaging interval based on xarray resample (M=Month, Y=Year)
 ds = 'nsametC1.b1'
-#ds = 'nsa60noaacrnX1.b1'
+ds = 'nsa60noaacrnX1.b1'
 variable = 'temp_mean'
-#variable = 'temperature'
+variable = 'temperature'
 averaging = 'Y'
 site = ds[0:3]
 
