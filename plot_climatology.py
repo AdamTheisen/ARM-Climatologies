@@ -10,7 +10,7 @@ ds = 'nsametC1.b1'
 ds2 = 'nsa60noaacrnX1.b1'
 variable = 'temp_mean'
 variable2 = 'temperature'
-averaging = 'M'
+averaging = 'Y'
 units = 'degC'
 
 filename = './results/' + ds + '_' + variable + '_' + averaging + '.csv'
@@ -36,18 +36,24 @@ display.axes[0].set_ylabel('(' + units + ')')
 if averaging == 'M':
     idx = np.where(obj['n_samples'] < 28 * 24 * 60)
     #idx = np.where(obj['n_samples'] < 25 * 24) # For hourly averaged data
-    plt.text(1.0, -0.1, 'Black Dots = < 25 days used in average', transform=display.axes[0].transAxes,
+    idx2 = np.where(obj2['n_samples'] < 25 * 24) # For hourly averaged data
+    plt.text(1.0, -0.1, 'Black Dots (ARM ) and Squares (NOAA) = < 25 days used in average',
+             transform=display.axes[0].transAxes, fontsize=7,
              horizontalalignment='right')
     myFmt = mdates.DateFormatter('%b %Y')
 if averaging == 'Y':
     idx = np.where(obj['n_samples'] < 334 * 24 * 60)
     #idx = np.where(obj['n_samples'] < 334 * 24) # For hourly averaged data
-    plt.text(1.0, -0.1, 'Black Dots = < 334 days used in average', transform=display.axes[0].transAxes,
+    idx2 = np.where(obj2['n_samples'] < 334 * 24) # For hourly averaged data
+    plt.text(1.0, -0.1, 'Black Dots (ARM ) and Squares (NOAA) = < 334 days used in average',
+             transform=display.axes[0].transAxes, fontsize=7,
              horizontalalignment='right')
     myFmt = mdates.DateFormatter('%Y')
 
+print(obj2['time'].values)
 display.axes[0].xaxis.set_major_formatter(myFmt)
 display.axes[0].plot(obj['time'].values[idx], obj['mean'].values[idx], 'ko')
+display.axes[0].plot(obj2['time'].values[idx2], obj2['mean'].values[idx2], 'ks')
 display.axes[0].grid(axis='y')
 plt.legend()
 
