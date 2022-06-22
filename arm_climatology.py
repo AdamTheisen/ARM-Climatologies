@@ -8,14 +8,16 @@ import pandas as pd
 # Set up the datastream, variable name and averaging interval
 # Averaging interval based on xarray resample (M=Month, Y=Year)
 #ds = 'nsametC1.b1'
-ds = 'nsa60noaacrnX1.b1'
+#ds = 'nsa60noaacrnX1.b1'
+ds = 'nsalpmC1.a1'
 #variable = 'temp_mean'
-variable = 'temperature'
-averaging = 'M'
+#variable = 'precipitation'
+variable = 'intensity_total'
+averaging = 'Y'
 site = ds[0:3]
 
 # Update this path to where your data are
-files = glob.glob('/data/archive/' + site + '/' + ds + '/' + ds + '.*cdf')
+files = glob.glob('/data/archive/' + site + '/' + ds + '/' + ds + '.*nc')
 years = [f.split('.')[-3][0:4] for f in files]
 years = np.unique(years)
 
@@ -24,7 +26,7 @@ f = open('./results/' + ds + '_' + variable + '_' + averaging + '.csv', 'w')
 for y in years:
     if int(y) == int(datetime.now().year):
         continue
-    files = glob.glob('/data/archive/'+site+'/'+ds+'/'+ds+'.'+y+'*cdf')
+    files = glob.glob('/data/archive/'+site+'/'+ds+'/'+ds+'.'+y+'*nc')
     files.sort()
     obj = act.io.armfiles.read_netcdf(files)
     obj = act.qc.arm.add_dqr_to_qc(obj, variable=variable)
@@ -33,9 +35,14 @@ for y in years:
     except:
         pass
 
+    # For 1 min precip rates
+    data = obj[variable].values / 60.
+    obj[variable].values = data
+
     # Produce specified averages and print out to a file
     count = obj.resample(time=averaging, skipna=True).count()
-    obj = obj.resample(time=averaging, skipna=True).mean()
+    #obj = obj.resample(time=averaging, skipna=True).mean()
+    obj = obj.resample(time=averaging, skipna=True).sum()
     for i in range(len(obj['time'].values)):
         if averaging == 'Y':
             time = str(pd.to_datetime(obj['time'].values[i]).year) + '-01-01T00:00:00.000000000'
