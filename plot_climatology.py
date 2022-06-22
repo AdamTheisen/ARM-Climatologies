@@ -8,10 +8,8 @@ import scipy
 
 #ds = 'nsametC1.b1'
 #variable = 'temp_mean'
-#ds = 'nsa60noaacrnX1.b1'
-#variable = 'precipitation'
-ds = 'nsalpmC1.a1'
-variable = 'intensity_total'
+ds = 'nsa60noaacrnX1.b1'
+variable = 'precipitation'
 averaging = 'Y'
 units = 'mm'
 

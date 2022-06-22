@@ -17,6 +17,7 @@ Table 1. Minimum, maximum, and delta thresholds for each fixed site based on the
 
 ## Results
 ### North Slope of Alaska
+#### Temperature
 The NSA monthly temperatures from both the ARM and NOAA (NOOA Climate Reference Network) sites (Fig. 1) show a notable period from 2014-2019 where the average temperatures over the winter were higher as compared to the data from 2005-2013.   In both datasets, there was a significant decrease in the monthly averages during the 2019-2020 winter.  As shown in Figure 1, the agreement between the ARM and NOAA monthly averages validates that the ARM and NOAA temperature records are consistent and the slight deviations that are present are due to missing periods of data (black circle and sqaures). Yearly averaged temperature are likewise, very similar as shown in Figure 2.  As noted, the increase in temperatures from 2014-2019 is visible in the yearly averages with that significant decrease in 2020 In Figures 1 and 2, the larger black dot indicate months where there were less than 25 days worth of data used to produce that average and as such likely has some bias.  Data for these periods can be found in the [results](https://github.com/AdamTheisen/ARM-Climatologies/tree/main/results) area of this repository.
 
 
@@ -26,7 +27,7 @@ Figure 1. Monthly average temperatures from ARM (blue) and NOAA (orange).
 ![ARM and NOAA Yearly Average Temperatures](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/nsametC1.b1_temp_mean_nsa60noaacrnX1.b1_temperature_Y.png)
 Figure 2. Yearlly average temperatures from ARM (blue) and NOAA (orange).
 
-In visualizing these data another way (Fig. 3), the spread in the temperatures over the winter months, espcially in January to March is clear compared with summer months.  The monthly values can be found in Table 2.
+In visualizing these data another way (Fig. 3), the spread in the temperatures over the winter months, espcially in January to March is clear compared with summer months.  The monthly values can be found in Table 2 and indicate that July 2019 was the warmest on record since 2004 by 1.4ºC and the 2017-2019 period including 3 of the 5 warmest July's on record.
 
 ![ARM Monthly Average Temperatures](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/nsametC1.b1_temp_mean_by_month.png)
 Figure 3. Monthly average temperatures plotted by month and color-coded by year.
@@ -34,8 +35,17 @@ Figure 3. Monthly average temperatures plotted by month and color-coded by year.
 Table 2. ARM monthly average temperatures. 
 ![ARM Monthly Average Temperature Table](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/nsametC1.b1_temp_mean_table.png)
 
+#### Precipitation
+There has been a lack of reliable precipitation measurements at the ARM NSA site.  A total precipitation sensor (TPS; Hotplate) was deployed from 2006-2014 but the quality of the measurements is unknown.  The ARM MET system also had a present weather detector deployed but generally thos have not been reliable in frozen precipitation.  More recently (Spring 2017), two Thies laser precipitation monitor, two FlowCapt solid particle mass flux sensors and an array of sonic snow depth sensors have been deployed at the NSA site with more instrumentation soon to be deployed at a new extended facility, NSA E12.  The NOAA facility did have a non-heated tipping bucket rain gauge deployed (Fig. 4) which shows a general increease in precipitation from 2017-2019, coinciding with the warmer average temperatures.  There is likely also some erroneous data in 2004 which should be ignored.  Monthly totals (Fig. 5) generally show minimal precipitation during the winter months as expected with a non-heated tipping bucket rain gauge but outside of a few cases, no single month has recieved more than 50 mm of precipitation.  More efforts to verify these totals with more recent ARM measurements and to investigate snow fall climatologies at the NSA site.
+
+![ARM Yearly Precipitation Totals](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/nsa60noaacrnX1.b1_precipitation_Y.png)
+Figure 4. Yearly total precipitation from the NOAA unheated tipping bucket rain gauge.
+
+![ARM Monthly Precipitation Totals](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/nsa60noaacrnX1.b1_precipitation_Y.png)
+Figure 5. Monthly total precipitation from the NOAA unheated tipping bucket rain gauge.
+
 ## Conclusions
-This repository will serve as a single point of reference for ongoing climatology results for the ARM fixed sites.  The analysis will be expanded to the other fixed sites and updated on a yearly basis.  Additional statistics, instruments, and variables will be added as requested and time permits. In the results for NSA, it is clear to see that there has been some significant changes in the averages over time at the NSA site, most notable with prolonged periods of warmer winters.  It is vital that ARM and NOAA continue to collect high-quality data in this region to track future changes.
+This repository will serve as a single point of reference for ongoing climatology results for the ARM fixed sites.  The analysis will be expanded to the other fixed sites and updated on a yearly basis.  Additional statistics, instruments, and variables will be added as requested and time permits. In the results for NSA, it is clear to see that there has been some significant changes in the averages over time at the NSA site, most notable with prolonged periods of warmer winters which did lead to increases in observed liquid precipitation.  Additional efforts are needed to verify the precipitation measurements as there are some quality concerns.  It is vital that ARM and NOAA continue to collect high-quality data in this region to track future changes.
 
 ## References
 Andrews, E., Ogren, J. A., Bonasoni, P., Marinoni, A., Cuevas, E., Rodríguez, S., ... & Sheridan, P. (2011). Climatology of aerosol radiative properties in the free troposphere. Atmospheric Research, 102(4), 365-393.
