@@ -26,7 +26,7 @@ averaging = 'Y'
 site = ds[0:3]
 
 # Update this path to where your data are
-files = glob.glob('/data/archive/' + site + '/' + ds + '/' + ds + '.*nc')
+files = glob.glob('/data/archive/' + site + '/' + ds + '/' + ds + '.*cdf')
 years = [f.split('.')[-3][0:4] for f in files]
 years = np.unique(years)
 
@@ -35,7 +35,7 @@ f = open('./results/' + ds + '_' + variable + '_' + averaging + '.csv', 'w')
 for y in years:
     if int(y) == int(datetime.now().year):
         continue
-    files = glob.glob('/data/archive/'+site+'/'+ds+'/'+ds+'.'+y+'*nc')
+    files = glob.glob('/data/archive/'+site+'/'+ds+'/'+ds+'.'+y+'*cdf')
     files.sort()
     obj = act.io.armfiles.read_netcdf(files)
     obj = act.qc.arm.add_dqr_to_qc(obj, variable=variable)
@@ -47,6 +47,7 @@ for y in years:
     # For 1 min precip rates
     #data = obj[variable].values / 60.
     #obj[variable].values = data
+
 
     # Produce specified averages and print out to a file
     count = obj.resample(time=averaging, skipna=True).count()

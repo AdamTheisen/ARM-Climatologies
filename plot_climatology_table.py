@@ -16,10 +16,11 @@ import xarray as xr
 
 
 # Set information and read in data
-ds = 'nsametC1.b1'
-variable = 'temp_mean'
+#ds = 'nsametC1.b1'
+#variable = 'temp_mean'
+ds = 'nsa60noaacrnX1.b1'
+variable = 'precipitation'
 averaging = 'M'
-units = 'degC'
 
 filename = './results/' + ds + '_' + variable + '_' + averaging + '.csv'
 names = ['time', 'mean', 'n_samples']
@@ -27,10 +28,12 @@ obj = act.io.read_csv(filename, column_names=names, index_col=0, parse_dates=['t
 
 # Set Up Plot
 if averaging == 'M':
-    title = 'Monthly Averages of ' + variable + ' in '+ ds
+    #title = 'Monthly Averages of ' + variable + ' in '+ ds
+    title = 'Monthly Totals of ' + variable + ' in '+ ds
 
 # Exclude data when there's less than 25 days of data in a month
-obj = obj.where(obj['n_samples'] >= 25 * 24 * 60)
+#obj = obj.where(obj['n_samples'] >= 25 * 24 * 60)
+obj = obj.where(obj['n_samples'] >= 25 * 24) # For precipitation
 
 # Group data by year and run through each month/year
 # selecting the exact match in time and entering nan

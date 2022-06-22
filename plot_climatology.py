@@ -16,8 +16,8 @@ import pandas as pd
 import scipy
 
 
-ds = 'nsametC1.b1'
-variable = 'temp_mean'
+#ds = 'nsametC1.b1'
+#variable = 'temp_mean'
 #ds = 'nsa60noaacrnX1.b1'
 #variable = 'precipitation'
 averaging = 'Y'
