@@ -43,7 +43,7 @@ There has been a lack of reliable precipitation measurements at the ARM NSA site
 ![ARM Yearly Precipitation Totals](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/nsa60noaacrnX1.b1_precipitation_Y.png)
 Figure 4. Yearly total precipitation from the NOAA unheated tipping bucket rain gauge.
 
-![ARM Monthly Precipitation Totals](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/nsa60noaacrnX1.b1_precipitation_Y.png)
+![ARM Monthly Precipitation Totals](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/nsa60noaacrnX1.b1_precipitation_M.png)
 Figure 5. Monthly total precipitation from the NOAA unheated tipping bucket rain gauge.
 
 ## Conclusions
