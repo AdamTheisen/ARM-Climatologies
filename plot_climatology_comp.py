@@ -1,3 +1,12 @@
+"""
+Plot ARM Climatologies Comparison
+---------------------------------
+
+Process for plotting comparisons of two climatology files
+
+Author: Adam Theisen
+
+"""
 import act
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates

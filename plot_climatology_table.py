@@ -1,3 +1,13 @@
+"""
+Plot ARM Climatologies Tables
+-----------------------------
+
+Process for plotting up a table of climatology values on
+a month (x) by year (y) grid
+
+Author: Adam Theisen
+
+"""
 import act
 import matplotlib.pyplot as plt
 import numpy as np
@@ -5,6 +15,7 @@ import pandas as pd
 import xarray as xr
 
 
+# Set information and read in data
 ds = 'nsametC1.b1'
 variable = 'temp_mean'
 averaging = 'M'
@@ -18,12 +29,16 @@ obj = act.io.read_csv(filename, column_names=names, index_col=0, parse_dates=['t
 if averaging == 'M':
     title = 'Monthly Averages of ' + variable + ' in '+ ds
 
+# Exclude data when there's less than 25 days of data in a month
 obj = obj.where(obj['n_samples'] >= 25 * 24 * 60)
 
+# Group data by year and run through each month/year
+# selecting the exact match in time and entering nan
+# if not available.
 group = obj.groupby('time.year')
-data = []
 obj = xr.decode_cf(obj)
 years = []
+data = []
 for y in group.groups:
     y_data = []
     for m in range(1,13):
@@ -36,8 +51,8 @@ for y in group.groups:
     data.append(y_data)
     years.append(y)
 
+# Set up table and plot it
 months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-
 fig, ax = plt.subplots(figsize=(10,8))
 ax.axis('off')
 ax.axis('tight')

@@ -1,3 +1,14 @@
+"""
+ARM Climatologies
+-----------------
+
+Process for reading in ARM datastreams, applying QC and DQRs
+and producing monthly/yearly averages in csv files
+
+Author: Adam Theisen
+
+"""
+
 import act
 import glob
 import numpy as np
@@ -7,12 +18,10 @@ import pandas as pd
 
 # Set up the datastream, variable name and averaging interval
 # Averaging interval based on xarray resample (M=Month, Y=Year)
-#ds = 'nsametC1.b1'
+ds = 'nsametC1.b1'
+variable = 'temp_mean'
 #ds = 'nsa60noaacrnX1.b1'
-ds = 'nsalpmC1.a1'
-#variable = 'temp_mean'
 #variable = 'precipitation'
-variable = 'intensity_total'
 averaging = 'Y'
 site = ds[0:3]
 
@@ -36,13 +45,14 @@ for y in years:
         pass
 
     # For 1 min precip rates
-    data = obj[variable].values / 60.
-    obj[variable].values = data
+    #data = obj[variable].values / 60.
+    #obj[variable].values = data
 
     # Produce specified averages and print out to a file
     count = obj.resample(time=averaging, skipna=True).count()
-    #obj = obj.resample(time=averaging, skipna=True).mean()
-    obj = obj.resample(time=averaging, skipna=True).sum()
+    obj = obj.resample(time=averaging, skipna=True).mean()
+    #obj = obj.resample(time=averaging, skipna=True).sum() # For precipitation accumulation
+
     for i in range(len(obj['time'].values)):
         if averaging == 'Y':
             time = str(pd.to_datetime(obj['time'].values[i]).year) + '-01-01T00:00:00.000000000'

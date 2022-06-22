@@ -1,3 +1,13 @@
+"""
+Plot ARM Climatologies
+----------------------
+
+Process for plotting up a single climatology file
+
+Author: Adam Theisen
+
+"""
+
 import act
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
@@ -6,13 +16,14 @@ import pandas as pd
 import scipy
 
 
-#ds = 'nsametC1.b1'
-#variable = 'temp_mean'
-ds = 'nsa60noaacrnX1.b1'
-variable = 'precipitation'
+ds = 'nsametC1.b1'
+variable = 'temp_mean'
+#ds = 'nsa60noaacrnX1.b1'
+#variable = 'precipitation'
 averaging = 'Y'
-units = 'mm'
+units = 'degC'
 
+# Read in data file from results area
 filename = './results/' + ds + '_' + variable + '_' + averaging + '.csv'
 names = ['time', 'mean', 'n_samples']
 obj = act.io.read_csv(filename, column_names=names, index_col=0, parse_dates=['time'])
@@ -47,6 +58,7 @@ display.axes[0].xaxis.set_major_formatter(myFmt)
 display.axes[0].plot(obj['time'].values[idx], obj['mean'].values[idx], 'ko')
 display.axes[0].grid(axis='y')
 
+# Excluded for now but could use to plot lin regression line
 #seconds = (pd.to_datetime(obj['time'].values) - pd.Timestamp("1970-01-01")) // pd.Timedelta('1s')
 #result = scipy.stats.linregress(seconds, obj['mean'].values)
 #display.axes[0].plot(obj['time'].values, result.intercept + result.slope * seconds)

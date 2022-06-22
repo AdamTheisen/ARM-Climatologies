@@ -1,9 +1,20 @@
+"""
+Plot ARM Climatologies by Month
+-------------------------------
+
+Process for plotting up a single climatology file
+by month to see the spread in values over the years
+
+Author: Adam Theisen
+
+"""
+
 import act
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-
+# Set up the datastream and info to read in
 ds = 'nsametC1.b1'
 variable = 'temp_mean'
 averaging = 'M'
@@ -18,13 +29,13 @@ display = act.plotting.TimeSeriesDisplay(obj, figsize=(10,5))
 if averaging == 'M':
     title = 'Monthly Averages of ' + variable + ' in '+ ds
 
+# Remove months with less than 25 days
 obj = obj.where(obj['n_samples'] >= 25 * 24 * 60)
 
+# Run through the months and plot scatter plots
 group = obj.groupby('time.month')
-data = []
 fig, ax = plt.subplots(figsize=(10,6))
 for g in group.groups:
-    data.append(obj['mean'].values[group.groups[g]])
     years = pd.to_datetime(obj['time'].values[group.groups[g]]).year
     sc = ax.scatter(np.full(len(obj['mean'].values[group.groups[g]]), g), obj['mean'].values[group.groups[g]], c=years)
 
