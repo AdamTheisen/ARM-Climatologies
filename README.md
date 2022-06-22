@@ -26,6 +26,13 @@ Figure 1. Monthly average temperatures from ARM (blue) and NOAA (orange).
 ![ARM and NOAA Yearly Average Temperatures](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/nsametC1.b1_temp_mean_nsa60noaacrnX1.b1_temperature_Y.png)
 Figure 2. Yearlly average temperatures from ARM (blue) and NOAA (orange).
 
+In visualizing these data another way (Fig. 3), the spread in the temperatures over the winter months, espcially in January to March is clear compared with summer months.  The monthly values can be found in Table 2.
+
+[ARM Monthly Average Temperatures](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/nsametC1.b1_temp_mean_by_month.png)
+Figure 3. Monthly average temperatures plotted by month and color-coded by year.
+
+Table 2. ARM monthly average temperatures. 
+[ARM Monthly Average Temperature Table](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/nsametC1.b1_temp_mean_table.png)
 
 ## Conclusions
 This repository will serve as a single point of reference for ongoing climatology results for the ARM fixed sites.  The analysis will be expanded to the other fixed sites and updated on a yearly basis.  Additional statistics, instruments, and variables will be added as requested and time permits. In the results for NSA, it is clear to see that there has been some significant changes in the averages over time at the NSA site, most notable with prolonged periods of warmer winters.  It is vital that ARM and NOAA continue to collect high-quality data in this region to track future changes.
