@@ -56,11 +56,15 @@ Dong, X., Xi, B., & Minnis, P. (2006). A climatology of midlatitude continental 
 
 Kollias, P., Tselioudis, G., & Albrecht, B. A. (2007). Cloud climatology at the Southern Great Plains and the layer structure, drizzle, and atmospheric modes of continental stratus. Journal of Geophysical Research: Atmospheres, 112(D9).
 
+Kyrouac, J., & Shi, Y. Surface Meteorological Instrumentation (MET). Atmospheric Radiation Measurement (ARM) User Facility. https://doi.org/10.5439/1786358
+
 McFarlane, S. A., Long, C. N., & Flaherty, J. (2013). A Climatology of Surface Cloud Radiative Effects at the ARM Tropical Western Pacific Sites, Journal of Applied Meteorology and Climatology, 52(4), 996-1013. Retrieved Jun 21, 2022, from https://journals.ametsoc.org/view/journals/apme/52/4/jamc-d-12-0189.1.xml
 
 Michalsky, J., Denn, F., Flynn, C., Hodges, G., Kiedron, P., Koontz, A., ... & Schwartz, S. E. (2010). Climatology of aerosol optical depth in north‐central Oklahoma: 1992–2008. Journal of Geophysical Research: Atmospheres, 115(D7).
 
 Miller, M. A., Nitschke, K., Ackerman, T. P., Ferrell, W. R., Hickmon, N., & Ivey, M. (2016). The ARM Mobile Facilities, Meteorological Monographs, 57, 9.1-9.15. Retrieved Jun 21, 2022, from https://journals.ametsoc.org/view/journals/amsm/57/1/amsmonographs-d-15-0051.1.xml
+
+NOAA Climate Reference Network (60NOAACRN). Atmospheric Radiation Measurement (ARM) User Facility.
 
 Peppler, R. A., Kehoe, K. E., Monroe, J. W., Theisen, A. K., & Moore, S. T. (2016). The ARM Data Quality Program, Meteorological Monographs, 57, 12.1-12.14. Retrieved Jun 21, 2022, from https://journals.ametsoc.org/view/journals/amsm/57/1/amsmonographs-d-15-0039.1.xml
 
