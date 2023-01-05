@@ -19,7 +19,7 @@ ds = 'nsametC1.b1'
 ds2 = 'nsa60noaacrnX1.b1'
 variable = 'temp_mean'
 variable2 = 'temperature'
-averaging = 'M'
+averaging = 'Y'
 units = 'degC'
 
 filename = './results/' + ds + '_' + variable + '_' + averaging + '.csv'

@@ -16,12 +16,13 @@ import pandas as pd
 import scipy
 
 
-#ds = 'nsametC1.b1'
-#variable = 'temp_mean'
-#ds = 'nsa60noaacrnX1.b1'
-#variable = 'precipitation'
-averaging = 'Y'
-units = 'degC'
+ds = 'nsametC1.b1'
+variable = 'temp_mean'
+ds = 'nsa60noaacrnX1.b1'
+variable = 'temperature'
+variable = 'precipitation'
+averaging = 'M'
+units = 'mm'
 
 # Read in data file from results area
 filename = './results/' + ds + '_' + variable + '_' + averaging + '.csv'
@@ -41,14 +42,17 @@ display.axes[0].set_ylabel('(' + units + ')')
 # and less than 334 days for yearly averages
 if averaging == 'M':
     idx = np.where(obj['n_samples'] < 25 * 24 * 60)
-    idx = np.where(obj['n_samples'] < 25 * 24) # For hourly averaged data
+    if '60noaa' in ds:
+        print('test')
+        idx = np.where(obj['n_samples'] < 25 * 24) # For hourly averaged data
     plt.text(1.0, -0.1, 'Black Dots (ARM ) and Squares (NOAA) = < 25 days used in average',
              transform=display.axes[0].transAxes, fontsize=7,
              horizontalalignment='right')
     myFmt = mdates.DateFormatter('%b %Y')
 if averaging == 'Y':
     idx = np.where(obj['n_samples'] < 334 * 24 * 60)
-    idx = np.where(obj['n_samples'] < 334 * 24) # For hourly averaged data
+    if '60noaa' in ds:
+        idx = np.where(obj['n_samples'] < 334 * 24) # For hourly averaged data
     plt.text(1.0, -0.1, 'Black Dots (ARM ) and Squares (NOAA) = < 334 days used in average',
              transform=display.axes[0].transAxes, fontsize=7,
              horizontalalignment='right')

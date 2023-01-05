@@ -16,10 +16,10 @@ import xarray as xr
 
 
 # Set information and read in data
-#ds = 'nsametC1.b1'
-#variable = 'temp_mean'
-ds = 'nsa60noaacrnX1.b1'
-variable = 'precipitation'
+ds = 'nsametC1.b1'
+variable = 'temp_mean'
+#ds = 'nsa60noaacrnX1.b1'
+#variable = 'precipitation'
 averaging = 'M'
 
 filename = './results/' + ds + '_' + variable + '_' + averaging + '.csv'
@@ -33,7 +33,10 @@ if averaging == 'M':
 
 # Exclude data when there's less than 25 days of data in a month
 #obj = obj.where(obj['n_samples'] >= 25 * 24 * 60)
-obj = obj.where(obj['n_samples'] >= 25 * 24) # For precipitation
+if 'precip' in variable:
+    obj = obj.where(obj['n_samples'] >= 25 * 24) # For precipitation
+else:
+    obj = obj.where(obj['n_samples'] >= 25 * 24 * 60)
 
 # Group data by year and run through each month/year
 # selecting the exact match in time and entering nan
@@ -63,7 +66,11 @@ ax.axis('tight')
 table = plt.table(data, rowLabels=years, colLabels=months, bbox=[0, 0, 1, 1])
 table.auto_set_font_size(False)
 table.set_fontsize(12)
-plt.title('Grid of Monthly Averages for ' + ds + ' ' + variable + '\n' + 'Months with less than 25 days of samples have been removed')
+#plt.title('Grid of Monthly Averages for ' + ds + ' ' + variable + '\n' + 'Months with less than 25 days of samples have been removed')
+if 'precip' in variable:
+    plt.title('Grid of Monthly Totals for ' + ds + ' ' + variable + '\n' + 'Months with less than 25 days of samples have been removed')
+else:
+    plt.title('Grid of Monthly Averages for ' + ds + ' ' + variable + '\n' + 'Months with less than 25 days of samples have been removed')
 
 imagename = './images/' + ds + '_' + variable + '_table' + '.png'
 plt.tight_layout()

@@ -18,10 +18,11 @@ import pandas as pd
 
 # Set up the datastream, variable name and averaging interval
 # Averaging interval based on xarray resample (M=Month, Y=Year)
-ds = 'nsametC1.b1'
-variable = 'temp_mean'
-#ds = 'nsa60noaacrnX1.b1'
-#variable = 'precipitation'
+#ds = 'nsametC1.b1'
+#variable = 'temp_mean'
+ds = 'nsa60noaacrnX1.b1'
+variable = 'precipitation'
+#variable = 'temperature'
 averaging = 'Y'
 site = ds[0:3]
 
@@ -51,8 +52,10 @@ for y in years:
 
     # Produce specified averages and print out to a file
     count = obj.resample(time=averaging, skipna=True).count()
-    obj = obj.resample(time=averaging, skipna=True).mean()
-    #obj = obj.resample(time=averaging, skipna=True).sum() # For precipitation accumulation
+    if 'precip' in variable:
+        obj = obj.resample(time=averaging, skipna=True).sum() # For precipitation accumulation
+    else:
+        obj = obj.resample(time=averaging, skipna=True).mean()
 
     for i in range(len(obj['time'].values)):
         if averaging == 'Y':
