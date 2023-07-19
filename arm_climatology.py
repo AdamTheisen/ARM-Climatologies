@@ -19,8 +19,8 @@ import pandas as pd
 # Set up the datastream, variable name and averaging interval
 # Averaging interval based on xarray resample (M=Month, Y=Year)
 ds_dict = {
-        #'sgpmetE13.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
-        #'nsametC1.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
+        'sgpmetE13.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
+        'nsametC1.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
         'nsa60noaacrnX1.b1': {'variables': ['temperature', 'precipitation'], 'averaging': ['Y', 'M']},
 }
 
