@@ -10,18 +10,83 @@ Author: Adam Theisen
 """
 
 import act
+print(act.__file__)
 import glob
 import numpy as np
 from datetime import datetime
 import pandas as pd
+import dask
+
+
+def process_data(site, ds, y, variable, averaging):
+    if int(y) == int(datetime.now().year):
+        return
+    files = glob.glob('/data/archive/'+site+'/'+ds+'/'+ds+'.'+y+'*cdf')
+
+    files.sort()
+    obj = act.io.arm.read_arm_netcdf(files)
+    obj = act.qc.arm.add_dqr_to_qc(obj, variable=variable)
+    try:
+        obj = obj.where(obj['qc_'+variable] == 0)
+    except:
+        pass
+
+    # For 1 min precip rates
+    #data = obj[variable].values / 60.
+    #obj[variable].values = data
+
+    # Produce specified averages and print out to a file
+    count = obj.resample(time=averaging, skipna=True).count()
+    if 'precip' in variable:
+        obj = obj.resample(time=averaging, skipna=True).sum() # For precipitation accumulation
+    else:
+        obj = obj.resample(time=averaging, skipna=True).mean()
+
+    data = []
+    for i in range(len(obj['time'].values)):
+        if averaging == 'Y':
+            time = str(pd.to_datetime(obj['time'].values[i]).year) + '-01-01T00:00:00.000000000'
+        if averaging == 'M':
+            time = str(pd.to_datetime(obj['time'].values[i]).year) + '-' + str(pd.to_datetime(obj['time'].values[i]).month).zfill(2)  + '-01T00:00:00.000000000'
+        if (obj['time'].values[i].astype('datetime64[Y]').astype(int) + 1970) == int(y):
+            data.append([time, str(obj[variable].values[i]), str(count[variable].values[i])])
+    obj.close()
+
+    return data
 
 
 # Set up the datastream, variable name and averaging interval
 # Averaging interval based on xarray resample (M=Month, Y=Year)
 ds_dict = {
-        'sgpmetE13.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
-        'nsametC1.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
+        #'sgpmetE1.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
+        #'sgpmetE3.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
+        #'sgpmetE4.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
+        #'sgpmetE5.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
+        #'sgpmetE6.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
+        #'sgpmetE7.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
+        #'sgpmetE8.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
+        #'sgpmetE9.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
+        #'sgpmetE11.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
+        #'sgpmetE15.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
+        #'sgpmetE20.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
+        #'sgpmetE24.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
+        #'sgpmetE25.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
+        #'sgpmetE27.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
+        #'sgpmetE31.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
+        #'sgpmetE32.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
+        #'sgpmetE33.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
+        #'sgpmetE34.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
+        #'sgpmetE35.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
+        #'sgpmetE36.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
+        #'sgpmetE37.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
+        #'sgpmetE38.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
+        #'sgpmetE39.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
+        #'sgpmetE40.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
+        #'sgpmetE41.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
+
         'nsa60noaacrnX1.b1': {'variables': ['temperature', 'precipitation'], 'averaging': ['Y', 'M']},
+        #'sgpmetE13.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
+        #'nsametC1.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
 }
 
 for ds in ds_dict:
@@ -37,37 +102,18 @@ for ds in ds_dict:
         for variable in ds_dict[ds]['variables']:
             print('Processing: ' + ' '.join([ds, variable, averaging]))
             f = open('./results/' + ds + '_' + variable + '_' + averaging + '.csv', 'w')
+            task = []
             for y in years:
-                if int(y) == int(datetime.now().year):
+                task.append(dask.delayed(process_data)(site, ds, y, variable, averaging))
+                data = process_data(site, ds, y, variable, averaging)
+                print(data)
+            sys.exit()
+            #results = dask.compute(*task)
+            for i, r in enumerate(results):
+                if r is None:
                     continue
-                files = glob.glob('/data/archive/'+site+'/'+ds+'/'+ds+'.'+y+'*cdf')
-
-                files.sort()
-                obj = act.io.armfiles.read_netcdf(files)
-                obj = act.qc.arm.add_dqr_to_qc(obj, variable=variable)
-                try:
-                    obj = obj.where(obj['qc_'+variable] == 0)
-                except:
-                    pass
-
-                # For 1 min precip rates
-                #data = obj[variable].values / 60.
-                #obj[variable].values = data
-
-                # Produce specified averages and print out to a file
-                count = obj.resample(time=averaging, skipna=True).count()
-                if 'precip' in variable:
-                    obj = obj.resample(time=averaging, skipna=True).sum() # For precipitation accumulation
+                if len(r) > 1:
+                    for month in r:
+                        f.write(','.join(month) + '\n')
                 else:
-                    obj = obj.resample(time=averaging, skipna=True).mean()
-
-                for i in range(len(obj['time'].values)):
-                    if averaging == 'Y':
-                        time = str(pd.to_datetime(obj['time'].values[i]).year) + '-01-01T00:00:00.000000000'
-                    if averaging == 'M':
-                        time = str(pd.to_datetime(obj['time'].values[i]).year) + '-' + str(pd.to_datetime(obj['time'].values[i]).month).zfill(2)  + '-01T00:00:00.000000000'
-                    if (obj['time'].values[i].astype('datetime64[Y]').astype(int) + 1970) == int(y):
-                        f.write(','.join([time, str(obj[variable].values[i]), str(count[variable].values[i])]) + '\n')
-                obj.close()
-
-            f.close()
+                    f.write(','.join(r[0]) + '\n')
