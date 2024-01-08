@@ -36,7 +36,7 @@ for ds in ds_dict:
 
             # Exclude data when there's less than 25 days of data in a month
             #obj = obj.where(obj['n_samples'] >= 25 * 24 * 60)
-            if 'nsa60noaa' in variable:
+            if 'nsa60noaa' in ds:
                 obj = obj.where(obj['n_samples'] >= 25 * 24)
             else:
                 obj = obj.where(obj['n_samples'] >= 25 * 24 * 60)

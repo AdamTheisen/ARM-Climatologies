@@ -36,8 +36,12 @@ for ds in ds_dict:
             display = act.plotting.TimeSeriesDisplay(obj, figsize=(10,5))
             if averaging == 'M':
                 title = 'Monthly Averages of ' + variable + ' in '+ ds
+                if 'nsa60noaa' in ds:
+                    title = 'Monthly Total of Precipitation in ' + ds
             if averaging == 'Y':
                 title = 'Yearly Averages of ' + variable + ' in '+ ds
+                if 'nsa60noaa' in ds:
+                    title = 'Yearly Total of Precipitation in ' + ds
             display.plot('mean', set_title=title)
             display.axes[0].set_ylabel('(' + units + ')')
 

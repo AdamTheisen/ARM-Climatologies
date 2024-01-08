@@ -21,11 +21,14 @@ import dask
 def process_data(site, ds, y, variable, averaging):
     if int(y) == int(datetime.now().year):
         return
-    files = glob.glob('/data/archive/'+site+'/'+ds+'/'+ds+'.'+y+'*cdf')
+    files = glob.glob('./data/'+ds+'/'+ds+'.'+y+'*')
 
     files.sort()
     obj = act.io.arm.read_arm_netcdf(files)
-    obj = act.qc.arm.add_dqr_to_qc(obj, variable=variable)
+    if variable == 'temp_mean':
+        obj = act.qc.arm.add_dqr_to_qc(obj, variable=variable, exclude=['D160215.4'])
+    else:
+        obj = act.qc.arm.add_dqr_to_qc(obj, variable=variable)
     try:
         obj = obj.where(obj['qc_'+variable] == 0)
     except:
@@ -84,30 +87,31 @@ ds_dict = {
         #'sgpmetE40.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
         #'sgpmetE41.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
 
-        'nsa60noaacrnX1.b1': {'variables': ['temperature', 'precipitation'], 'averaging': ['Y', 'M']},
+        #'nsa60noaacrnX1.b1': {'variables': ['temperature', 'precipitation'], 'averaging': ['Y', 'M']},
         #'sgpmetE13.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
         #'nsametC1.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
+        'nsamawsC1.b1': {'variables': ['atmospheric_temperature', 'atmospheric_relative_humidity'], 'averaging': ['Y', 'M']},
 }
 
 for ds in ds_dict:
     site = ds[0:3]
 
     # Update this path to where your data are
-    files = glob.glob('/data/archive/' + site + '/' + ds + '/' + ds + '.*cdf')
+    files = glob.glob('./data/' + ds + '/' + ds + '.*')
+    files.sort()
     years = [f.split('.')[-3][0:4] for f in files]
     years = np.unique(years)
-
     for averaging in ds_dict[ds]['averaging']:
         # Open a file to write the results out to and process each year
         for variable in ds_dict[ds]['variables']:
             print('Processing: ' + ' '.join([ds, variable, averaging]))
             f = open('./results/' + ds + '_' + variable + '_' + averaging + '.csv', 'w')
             task = []
+            results = []
             for y in years:
-                task.append(dask.delayed(process_data)(site, ds, y, variable, averaging))
+                #task.append(dask.delayed(process_data)(site, ds, y, variable, averaging))
                 data = process_data(site, ds, y, variable, averaging)
-                print(data)
-            sys.exit()
+                results.append(data)
             #results = dask.compute(*task)
             for i, r in enumerate(results):
                 if r is None:
