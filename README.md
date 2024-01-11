@@ -68,6 +68,8 @@ Figure 9. SGP precipitation totals by month.
 ## Conclusions
 This repository will serve as a single point of reference for ongoing climatology results for the ARM fixed sites.  The analysis will be expanded to the other fixed sites and updated on a yearly basis.  Additional statistics, instruments, and variables will be added as requested and time permits. In the results for NSA, it is clear to see that there has been some significant changes in the averages over time at the NSA site, most notable with prolonged periods of warmer winters which did lead to increases in observed liquid precipitation.  Additional efforts are needed to verify the precipitation measurements as there are some quality concerns.  It is vital that ARM and NOAA continue to collect high-quality data in this region to track future changes.
 
+At SGP, the yearly average temperatures have become less variable in recent years but do continue to trend upward.  Similarly with precipitation, the larger swings in total precipitation have leveled off in recent years.  Additional efforts to bring in more data for analysis at SGP and NSA will happen as time permits in the coming year.
+
 ## References
 Andrews, E., Ogren, J. A., Bonasoni, P., Marinoni, A., Cuevas, E., Rodríguez, S., ... & Sheridan, P. (2011). Climatology of aerosol radiative properties in the free troposphere. Atmospheric Research, 102(4), 365-393.
 
