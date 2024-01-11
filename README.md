@@ -46,6 +46,25 @@ Figure 4. Yearly total precipitation from the NOAA rain gauge.
 ![ARM Monthly Precipitation Totals](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/nsa60noaacrnX1.b1_precipitation_M.png)
 Figure 5. Monthly total precipitation from the NOAA rain gauge.
 
+### Southern Great Plains
+#### Temperature
+Yearly average temperatures at the SGP have ranged between 13 ºC and 17 ºC (Fig. 6).  Earlier portions of the record do show pronounced peaks and valleys whereas the more recent data (2015 onwards), does not show nearly as much variability.  Monthly average temperatures (Fig. 7) do show some abnormally hot summer peaks, in more recent years, it's the winters that have been more noticeably trending warmer.
+
+![SGP Yearly Average Temperatures](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/sgpmetE13.b1_temp_mean_Y.png)
+Figure 6. SGP yearly average temperature.
+
+![SGP Monthly Average Temperatures](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/sgpmetE13.b1_temp_mean_M.png)
+Figure 7. SGP monthly average temperature.
+
+#### Precipitationa
+As with temperature, the total precipitation has been more stable in recent years (Fig. 8).  Previously, the lower precip totals have been associated with the higher average yearly temperature peaks in 2006 and 2012.  The generaly trends in precipitation are expected with increasing precipitation in the spring (AMJ) (Fig. 9).
+
+![SGP Yearly Total Precipitation](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/sgpmetE13.b1_tbrg_precip_total_Y.png)
+Figure 8. SGP yearly total precipitation.
+
+![SGP Precipitation Totals by Month](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/sgpmetE13.b1_tbrg_precip_total_by_month.png)
+Figure 9. SGP precipitation totals by month.
+
 ## Conclusions
 This repository will serve as a single point of reference for ongoing climatology results for the ARM fixed sites.  The analysis will be expanded to the other fixed sites and updated on a yearly basis.  Additional statistics, instruments, and variables will be added as requested and time permits. In the results for NSA, it is clear to see that there has been some significant changes in the averages over time at the NSA site, most notable with prolonged periods of warmer winters which did lead to increases in observed liquid precipitation.  Additional efforts are needed to verify the precipitation measurements as there are some quality concerns.  It is vital that ARM and NOAA continue to collect high-quality data in this region to track future changes.
 
