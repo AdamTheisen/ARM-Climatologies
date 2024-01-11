@@ -56,7 +56,7 @@ Figure 6. SGP yearly average temperature.
 ![SGP Monthly Average Temperatures](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/sgpmetE13.b1_temp_mean_M.png)
 Figure 7. SGP monthly average temperature.
 
-#### Precipitationa
+#### Precipitation
 As with temperature, the total precipitation has been more stable in recent years (Fig. 8).  Previously, the lower precip totals have been associated with the higher average yearly temperature peaks in 2006 and 2012.  The generaly trends in precipitation are expected with increasing precipitation in the spring (AMJ) (Fig. 9).
 
 ![SGP Yearly Total Precipitation](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/sgpmetE13.b1_tbrg_precip_total_Y.png)
