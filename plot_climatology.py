@@ -20,7 +20,7 @@ import scipy
 ds_dict = {
         'nsametC1.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M'], 'units': ['degC', '%']},
         'nsa60noaacrnX1.b1': {'variables': ['temperature', 'precipitation'], 'averaging': ['Y', 'M'], 'units': ['degC', '%']},
-        'sgpmetE13.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M'], 'units': ['degC', '%']},
+        'sgpmetE13.b1': {'variables': ['temp_mean', 'rh_mean', 'tbrg_precip_total'], 'averaging': ['Y', 'M'], 'units': ['degC', '%', 'mm']},
 }
 
 # Read in data file from results area
@@ -51,17 +51,25 @@ for ds in ds_dict:
                 idx = np.where(obj['n_samples'] < 25 * 24 * 60)
                 if '60noaa' in ds:
                     idx = np.where(obj['n_samples'] < 25 * 24) # For hourly averaged data
-                plt.text(1.0, -0.1, 'Black Dots (ARM ) and Squares (NOAA) = < 25 days used in average',
-                         transform=display.axes[0].transAxes, fontsize=7,
-                         horizontalalignment='right')
+                    plt.text(1.0, -0.1, 'Black Dots (ARM ) and Squares (NOAA) = < 25 days used in average',
+                             transform=display.axes[0].transAxes, fontsize=7,
+                             horizontalalignment='right')
+                else:
+                    plt.text(1.0, -0.1, 'Black Dots = < 25 days used in average',
+                             transform=display.axes[0].transAxes, fontsize=7,
+                             horizontalalignment='right')
                 myFmt = mdates.DateFormatter('%b %Y')
             if averaging == 'Y':
                 idx = np.where(obj['n_samples'] < 334 * 24 * 60)
                 if '60noaa' in ds:
                     idx = np.where(obj['n_samples'] < 334 * 24) # For hourly averaged data
-                plt.text(1.0, -0.1, 'Black Dots (ARM ) and Squares (NOAA) = < 334 days used in average',
-                         transform=display.axes[0].transAxes, fontsize=7,
-                         horizontalalignment='right')
+                    plt.text(1.0, -0.1, 'Black Dots (ARM ) and Squares (NOAA) = < 334 days used in average',
+                             transform=display.axes[0].transAxes, fontsize=7,
+                             horizontalalignment='right')
+                else:
+                    plt.text(1.0, -0.1, 'Black Dots = < 334 days used in average',
+                             transform=display.axes[0].transAxes, fontsize=7,
+                             horizontalalignment='right')
                 myFmt = mdates.DateFormatter('%Y')
 
             display.axes[0].xaxis.set_major_formatter(myFmt)
