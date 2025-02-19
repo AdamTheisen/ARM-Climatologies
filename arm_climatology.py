@@ -24,6 +24,8 @@ def process_data(site, ds, y, variable, averaging):
     #if int(y) == int(datetime.now().year):
     #    return
     files = glob.glob('./data/'+ds+'/'+ds+'.'+y+'*')
+    if int(y) == int(datetime.now().year):
+        return
 
     files.sort()
     #obj = act.io.arm.read_arm_netcdf(files, compat='override', coords='minimal')
@@ -110,7 +112,8 @@ for ds in ds_dict:
     site = ds[0:3]
 
     # Update this path to where your data are
-    files = glob.glob('./data/' + ds + '/' + ds + '.*')
+    #files = glob.glob('./data/' + ds + '/' + ds + '.*')
+    files = glob.glob('/data/archive/' + site +'/' + ds + '/' + ds + '.*')
     files.sort()
     years = [f.split('.')[-3][0:4] for f in files]
     years = np.unique(years)
@@ -122,10 +125,10 @@ for ds in ds_dict:
             task = []
             results = []
             for y in years:
-                #task.append(dask.delayed(process_data)(site, ds, y, variable, averaging))
-                data = process_data(site, ds, y, variable, averaging)
-                results.append(data)
-            #results = dask.compute(*task)
+                task.append(dask.delayed(process_data)(site, ds, y, variable, averaging))
+                #data = process_data(site, ds, y, variable, averaging)
+                #results.append(data)
+            results = dask.compute(*task)
             for i, r in enumerate(results):
                 if r is None:
                     continue
