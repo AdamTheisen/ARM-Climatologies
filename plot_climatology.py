@@ -18,9 +18,13 @@ import scipy
 # Set up the datastream, variable name and averaging interval
 # Averaging interval based on xarray resample (M=Month, Y=Year)
 ds_dict = {
-        'nsametC1.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M'], 'units': ['degC', '%']},
-        'nsa60noaacrnX1.b1': {'variables': ['temperature', 'precipitation'], 'averaging': ['Y', 'M'], 'units': ['degC', '%']},
-        'sgpmetE13.b1': {'variables': ['temp_mean', 'rh_mean', 'tbrg_precip_total'], 'averaging': ['Y', 'M'], 'units': ['degC', '%', 'mm']},
+    'nsametC1.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M'], 'units': ['degC', '%']},
+    'nsa60noaacrnX1.b1': {'variables': ['temperature', 'precipitation'], 'averaging': ['Y', 'M'], 'units': ['degC', '%']},
+    'sgpmetE13.b1': {'variables': ['temp_mean', 'rh_mean', 'tbrg_precip_total'], 'averaging': ['Y', 'M'], 'units': ['degC', '%', 'mm']},
+    #'sgp30ecorE14.b1': {'variables': ['fc', 'h', 'lv_e', 'k'], 'averaging': ['Y', 'M'], 'units':['W/m^2', 'W/m^2', 'kg/(m s^2)', 'umol/(s m^2)']},
+    #'sgptsiskycoverC1.b1': {'variables': ['percent_opaque', 'percent_thin'], 'averaging': ['YE', 'M'], 'units': ['%', '%']},
+    #'nsatsiskycoverC1.b1': {'variables': ['percent_opaque', 'percent_thin'], 'averaging': ['Y', 'M'], 'units': ['%', '%']},
+
 }
 
 # Read in data file from results area
@@ -38,7 +42,7 @@ for ds in ds_dict:
                 title = 'Monthly Averages of ' + variable + ' in '+ ds
                 if 'nsa60noaa' in ds:
                     title = 'Monthly Total of Precipitation in ' + ds
-            if averaging == 'Y':
+            if averaging == 'Y' or averaging == 'YE':
                 title = 'Yearly Averages of ' + variable + ' in '+ ds
                 if 'nsa60noaa' in ds:
                     title = 'Yearly Total of Precipitation in ' + ds
@@ -49,27 +53,32 @@ for ds in ds_dict:
             # and less than 334 days for yearly averages
             if averaging == 'M':
                 idx = np.where(obj['n_samples'] < 25 * 24 * 60)
+                text = 'Black Dots = < 25 days used in average'
                 if '60noaa' in ds:
                     idx = np.where(obj['n_samples'] < 25 * 24) # For hourly averaged data
-                    plt.text(1.0, -0.1, 'Black Dots (ARM ) and Squares (NOAA) = < 25 days used in average',
-                             transform=display.axes[0].transAxes, fontsize=7,
-                             horizontalalignment='right')
-                else:
-                    plt.text(1.0, -0.1, 'Black Dots = < 25 days used in average',
-                             transform=display.axes[0].transAxes, fontsize=7,
-                             horizontalalignment='right')
+                    text = 'Black Dots (ARM ) and Squares (NOAA) = < 25 days used in average'
+                elif 'ecor' in ds:
+                    idx = np.where(obj['n_samples'] < 25 * 24 / 0.5) # For hourly averaged data
+                elif 'tsisky' in ds:
+                    idx = np.where(obj['n_samples'] < 25 * 8 * 60) # For daily data
+
+                plt.text(1.0, -0.1, text, transform=display.axes[0].transAxes, fontsize=7,
+                         horizontalalignment='right')
                 myFmt = mdates.DateFormatter('%b %Y')
-            if averaging == 'Y':
+            if averaging == 'Y' or averaging == 'YE':
                 idx = np.where(obj['n_samples'] < 334 * 24 * 60)
+                text = 'Black Dots = < 334 days used in average'
                 if '60noaa' in ds:
                     idx = np.where(obj['n_samples'] < 334 * 24) # For hourly averaged data
-                    plt.text(1.0, -0.1, 'Black Dots (ARM ) and Squares (NOAA) = < 334 days used in average',
-                             transform=display.axes[0].transAxes, fontsize=7,
-                             horizontalalignment='right')
-                else:
-                    plt.text(1.0, -0.1, 'Black Dots = < 334 days used in average',
-                             transform=display.axes[0].transAxes, fontsize=7,
-                             horizontalalignment='right')
+                    text = 'Black Dots (ARM ) and Squares (NOAA) = < 334 days used in average'
+                elif 'ecor' in ds:
+                    idx = np.where(obj['n_samples'] < 180 * 24 / 0.5) # For hourly averaged data
+                    text = 'Black Dots (ARM ) = < 180 days used in average'
+                elif 'tsisky' in ds:
+                    idx = np.where(obj['n_samples'] < 334 * 8 * 60)
+
+                plt.text(1.0, -0.1, text, transform=display.axes[0].transAxes, fontsize=7,
+                         horizontalalignment='right')
                 myFmt = mdates.DateFormatter('%Y')
 
             display.axes[0].xaxis.set_major_formatter(myFmt)

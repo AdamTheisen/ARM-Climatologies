@@ -48,7 +48,7 @@ Figure 5. Monthly total precipitation from the NOAA rain gauge.
 
 ### Southern Great Plains
 #### Temperature
-Yearly average temperatures at the SGP have ranged between 13 ºC and 17 ºC (Fig. 6).  Earlier portions of the record do show pronounced peaks and valleys whereas the more recent data (2015 onwards), does not show nearly as much variability.  Monthly average temperatures (Fig. 7) do show some abnormally hot summer peaks, in more recent years, it's the winters that have been more noticeably trending warmer.
+Yearly average temperatures at the SGP have ranged between 13 ºC and 17 ºC (Fig. 6).  Earlier portions of the record do show pronounced peaks and valleys whereas the more recent data (2015 onwards), does not show nearly as much variability.  Monthly average temperatures (Fig. 7) do show some abnormally hot summer peaks, in more recent years, it's the winters that have been more noticeably trending warmer.  Data from the MAWS was also incorporated into this analysis.  However, data from 2014-2015 do not have enough samples to provide a valid average and 2016-2017 appear to be biased high.  These results are being further analyzed.  Results from both systems do show that 2024 was a record high-temperature for SGP.  Only half of the year was used for the avreage in 2002.
 
 ![SGP Yearly Average Temperatures](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/sgpmetE13.b1_temp_mean_Y.png)
 Figure 6. SGP yearly average temperature.
@@ -66,9 +66,11 @@ Figure 8. SGP yearly total precipitation.
 Figure 9. SGP precipitation totals by month.
 
 ## Conclusions
-This repository will serve as a single point of reference for ongoing climatology results for the ARM fixed sites.  The analysis will be expanded to the other fixed sites and updated on a yearly basis.  Additional statistics, instruments, and variables will be added as requested and time permits. In the results for NSA, it is clear to see that there has been some significant changes in the averages over time at the NSA site, most notable with prolonged periods of warmer winters which did lead to increases in observed liquid precipitation.  Additional efforts are needed to verify the precipitation measurements as there are some quality concerns.  It is vital that ARM and NOAA continue to collect high-quality data in this region to track future changes.
+This repository will serve as a single point of reference for ongoing climatology results for the ARM fixed sites.  The analysis will be expanded to the other fixed sites and updated on a yearly basis.  Additional statistics, instruments, and variables will be added as requested and time permits. 
 
-At SGP, the yearly average temperatures have become less variable in recent years but do continue to trend upward.  Similarly with precipitation, the larger swings in total precipitation have leveled off in recent years.  Additional efforts to bring in more data for analysis at SGP and NSA will happen as time permits in the coming year.
+In the results for NSA, it is clear to see that there has been some significant changes in the averages over time at the NSA site, most notable with prolonged periods of warmer winters which did lead to increases in observed liquid precipitation.  Additional efforts are needed to verify the precipitation measurements as there are some quality concerns.  It is vital that ARM and NOAA continue to collect high-quality data in this region to track future changes.
+
+At SGP, the yearly average temperatures have become less variable in recent years but do continue to trend upward with 2024 being the hottest on record.  Similarly with precipitation, the larger swings in total precipitation have leveled off in recent years.  Additional efforts to bring in more data for analysis at SGP and NSA will happen as time permits in the coming year.
 
 ## References
 Andrews, E., Ogren, J. A., Bonasoni, P., Marinoni, A., Cuevas, E., Rodríguez, S., ... & Sheridan, P. (2011). Climatology of aerosol radiative properties in the free troposphere. Atmospheric Research, 102(4), 365-393.

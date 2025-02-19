@@ -15,10 +15,14 @@ import numpy as np
 import pandas as pd
 
 # Set up the datastream and info to read in
-ds = 'nsametC1.b1'
-variable = 'temp_mean'
+#ds = 'nsametC1.b1'
+ds = 'sgpmetE13.b1'
+variable = 'tbrg_precip_total'
 averaging = 'M'
-units = 'degC'
+units = 'mm'
+#variable = 'temp_mean'
+#averaging = 'M'
+#units = 'degC'
 
 filename = './results/' + ds + '_' + variable + '_' + averaging + '.csv'
 names = ['time', 'mean', 'n_samples']
@@ -48,7 +52,7 @@ plt.xticks(np.arange(1, 13, 1))
 
 cbar = plt.colorbar(sc)
 cbar.set_ticks(np.arange(2003, 2024, 5))
-ax.set_ylabel('Temperature (' + units + ')')
+ax.set_ylabel('Precipitation Total (' + units + ')')
 ax.set_xlabel('Month of Year')
 ax.grid(axis='y')
 plt.title('Plot of All Data By Month For ' + ds +' ' + variable)

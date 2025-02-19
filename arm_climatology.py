@@ -16,24 +16,33 @@ import numpy as np
 from datetime import datetime
 import pandas as pd
 import dask
+from act.utils.data_utils import DatastreamParserARM
+
 
 
 def process_data(site, ds, y, variable, averaging):
-    if int(y) == int(datetime.now().year):
-        return
+    #if int(y) == int(datetime.now().year):
+    #    return
     files = glob.glob('./data/'+ds+'/'+ds+'.'+y+'*')
 
     files.sort()
-    obj = act.io.arm.read_arm_netcdf(files)
+    #obj = act.io.arm.read_arm_netcdf(files, compat='override', coords='minimal')
+    obj = act.io.arm.read_arm_netcdf(files, coords='minimal')
     if variable == 'temp_mean':
         obj = act.qc.arm.add_dqr_to_qc(obj, variable=variable, exclude=['D160215.4'])
     else:
         obj = act.qc.arm.add_dqr_to_qc(obj, variable=variable)
+
+    
+    #if 'ecor' in ds:
+    #    r = [129, 265]
+    #    obj = obj.where((obj['wind_dir'].values < r[1]) & (obj['wind_dir'].values > r[0]))
+
     try:
         obj = obj.where(obj['qc_'+variable] == 0)
     except:
         pass
-
+    
     # For 1 min precip rates
     #data = obj[variable].values / 60.
     #obj[variable].values = data
@@ -87,10 +96,14 @@ ds_dict = {
         #'sgpmetE40.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
         #'sgpmetE41.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
 
-        'nsa60noaacrnX1.b1': {'variables': ['temperature', 'precipitation'], 'averaging': ['Y', 'M']},
-        'sgpmetE13.b1': {'variables': ['temp_mean', 'rh_mean', 'tbrg_precip_total'], 'averaging': ['Y', 'M']},
-        'nsametC1.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
-        'nsamawsC1.b1': {'variables': ['atmospheric_temperature', 'atmospheric_relative_humidity'], 'averaging': ['Y', 'M']},
+        #'nsa60noaacrnX1.b1': {'variables': ['temperature', 'precipitation'], 'averaging': ['Y', 'M']},
+        #'nsametC1.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['Y', 'M']},
+        #'nsamawsC1.b1': {'variables': ['atmospheric_temperature', 'atmospheric_relative_humidity'], 'averaging': ['Y', 'M']},
+        #'sgpmetE13.b1': {'variables': ['temp_mean', 'rh_mean', 'tbrg_precip_total'], 'averaging': ['Y', 'M']},
+        'sgpmawsC1.b1': {'variables': ['atmospheric_temperature', 'atmospheric_relative_humidity'], 'averaging': ['Y', 'M']},
+        #'sgp30ecorE14.b1': {'variables': ['h', 'lv_e', 'k', 'fc'], 'averaging': ['M']},
+        #'sgp30ecorE14.b1': {'variables': ['lv_e', 'k', 'fc'], 'averaging': ['M']},
+        #'nsatsiskycoverC1.b1': {'variables': ['percent_opaque', 'percent_thin'], 'averaging': ['Y', 'M']},
 }
 
 for ds in ds_dict:
