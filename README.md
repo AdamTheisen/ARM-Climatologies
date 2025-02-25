@@ -50,10 +50,10 @@ Figure 5. Monthly total precipitation from the NOAA rain gauge.
 #### Temperature
 Yearly average temperatures at the SGP have ranged between 13 ºC and 17 ºC (Fig. 6).  Earlier portions of the record do show pronounced peaks and valleys whereas the more recent data (2015 onwards), does not show nearly as much variability.  Monthly average temperatures (Fig. 7) do show some abnormally hot summer peaks, in more recent years, it's the winters that have been more noticeably trending warmer.  Data from the MAWS was also incorporated into this analysis.  However, data from 2014-2015 do not have enough samples to provide a valid average and 2016-2017 appear to be biased high.  These results are being further analyzed.  Results from both systems do show that 2024 was a record high-temperature for SGP.  Only half of the year was used for the avreage in 2002.
 
-![SGP Yearly Average Temperatures](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/sgpmetE13.b1_temp_mean_Y.png)
+![SGP Yearly Average Temperatures](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/sgpmetE13.b1_temp_mean_sgpmawsC1.b1_atmospheric_temperature_Y.png)
 Figure 6. SGP yearly average temperature.
 
-![SGP Monthly Average Temperatures](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/sgpmetE13.b1_temp_mean_M.png)
+![SGP Monthly Average Temperatures](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/sgpmetE13.b1_temp_mean_sgpmawsC1.b1_atmospheric_temperature_M.png)
 Figure 7. SGP monthly average temperature.
 
 #### Precipitation
