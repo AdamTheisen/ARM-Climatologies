@@ -16,16 +16,16 @@ import xarray as xr
 
 
 ds_dict = {
-        'nsametC1.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['M']},
-        'nsa60noaacrnX1.b1': {'variables': ['temperature', 'precipitation'], 'averaging': ['M'],},
-        'sgpmetE13.b1': {'variables': ['temp_mean', 'rh_mean', 'tbrg_precip_total'], 'averaging': ['M']},
+        'nsametC1.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['ME']},
+        'nsa60noaacrnX1.b1': {'variables': ['temperature', 'precipitation'], 'averaging': ['ME'],},
+        'sgpmetE13.b1': {'variables': ['temp_mean', 'rh_mean', 'tbrg_precip_total'], 'averaging': ['ME']},
 }
 
 for ds in ds_dict:
     for i, variable in enumerate(ds_dict[ds]['variables']):
         for averaging in ds_dict[ds]['averaging']:
             filename = './results/' + ds + '_' + variable + '_' + averaging + '.csv'
-            names = ['time', 'mean', 'n_samples']
+            names = ['time', 'mean', 'n_samples', 'min', 'max', 'std_dev', 'standard_error']
             obj = act.io.read_csv(filename, column_names=names, index_col=0, parse_dates=['time'])
 
             # Set Up Plot

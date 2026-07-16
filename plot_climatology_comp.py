@@ -16,8 +16,9 @@ import scipy
 
 
 plot_dict = {
-    'p1': {'ds': {'nsametC1.b1': 'temp_mean', 'nsa60noaacrnX1.b1': 'temperature', 'nsamawsC1.b1': 'atmospheric_temperature'}, 'averaging': ['Y', 'M'], 'units': 'degC'},
-    'p2': {'ds': {'sgpmetE13.b1': 'temp_mean', 'sgpmawsC1.b1': 'atmospheric_temperature'}, 'averaging': ['Y', 'M'], 'units': 'degC'},
+    'p1': {'ds': {'nsametC1.b1': 'temp_mean', 'nsa60noaacrnX1.b1': 'temperature', 'nsamawsC1.b1': 'atmospheric_temperature'}, 'averaging': ['YE', 'ME'], 'units': 'degC'},
+    'p2': {'ds': {'sgpmetE13.b1': 'temp_mean', 'sgpmawsC1.b1': 'atmospheric_temperature'}, 'averaging': ['YE', 'ME'], 'units': 'degC'},
+    'p3': {'ds': {'enametC1.b1': 'temp_mean', 'enamawsC1.b1': 'atmospheric_temperature'}, 'averaging': ['YE', 'ME'], 'units': 'degC'},
 }
 
 for plot in plot_dict:
@@ -36,16 +37,21 @@ for plot in plot_dict:
     ds_dict = {}
     for averaging in plot_dict[plot]['averaging']:
         filename = './results/' + ds + '_' + variable + '_' + averaging + '.csv'
-        names = ['time', 'mean', 'n_samples']
+        names = ['time', 'mean', 'n_samples', 'min', 'max', 'std_dev', 'standard_error']
+
         obj = act.io.read_csv(filename, column_names=names, index_col=0, parse_dates=['time'])
         ds_dict['ARM MET'] = obj
 
         filename = './results/' + ds2 + '_' + variable2 + '_' + averaging + '.csv'
+        print(filename)
         obj2 = act.io.read_csv(filename, column_names=names, index_col=0, parse_dates=['time'])
         if 'sgp' in ds:
             ds_dict['ARM MAWS'] = obj2
         else:
-            ds_dict['NOAA'] = obj2
+            if 'ena' in ds2:
+                ds_dict['MAWS'] = obj2
+            else:
+                ds_dict['NOAA'] = obj2
        
         if len(plot_dict[plot]['ds']) == 3:
             filename = './results/' + ds3 + '_' + variable3 + '_' + averaging + '.csv'
@@ -55,14 +61,14 @@ for plot in plot_dict:
 
         # Set Up Plot
         display = act.plotting.TimeSeriesDisplay(ds_dict, figsize=(10,5))
-        if averaging == 'M':
+        if averaging == 'ME':
             title = 'Monthly Averages of ' + variable + ' in '+ ds
-        if averaging == 'Y':
+        if averaging == 'YE':
             title = 'Yearly Averages of ' + variable + ' in '+ ds
 
         # Highlight samples that have less than 28 days worth of samples for monthly
         # and less than 334 days for yearly averages
-        if averaging == 'M':
+        if averaging == 'ME':
             idx = np.where(obj['n_samples'] < 28 * 24 * 60)
             sub_text = 'Black Dots (ARM MET) and Squares (ARM MAWS),\n = < 25 days used in average'
             if 'nsa60noaa' in ds:
@@ -78,7 +84,7 @@ for plot in plot_dict:
             plt.text(1.0, -0.15, sub_text, transform=display.axes[0].transAxes, fontsize=7,
                      horizontalalignment='right')
             myFmt = mdates.DateFormatter('%b %Y')
-        if averaging == 'Y':
+        if averaging == 'YE':
             sub_text = 'Black Dots (ARM MET) and Squares (ARM MAWS),\n = < 334 days used in average'
             idx = np.where(obj['n_samples'] < 334 * 24 * 60)
             if 'nsa60noaa' in ds:
@@ -86,7 +92,8 @@ for plot in plot_dict:
             idx2 = np.where(obj2['n_samples'] < 334 * 24 * 60)
             if 'nsa60noaa' in ds2:
                 idx2 = np.where(obj2['n_samples'] < 334 * 24) # For hourly averaged data
-
+            if 'enamaws' in ds2:
+                idx2 = np.where(obj2['n_samples'] < 334 * 24 * 6) # For 10 second data
 
             if len(plot_dict[plot]['ds']) == 3:
                 idx3 = np.where(obj3['n_samples'] < 334 * 24 * 60)
@@ -100,7 +107,7 @@ for plot in plot_dict:
 
         #obj['mean'][idx] = np.nan
         #obj2['mean'][idx2] = np.nan
-        if averaging == 'Y':
+        if averaging == 'YE':
             #obj['mean'][0] = np.nan
             #obj2['mean'][0] = np.nan
             if len(plot_dict[plot]['ds']) == 3:
