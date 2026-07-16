@@ -104,7 +104,7 @@ ds_dict = {
         #'sgpmetE40.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['YE', 'M']},
         #'sgpmetE41.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['YE', 'M']},
 
-        #'nsa60noaacrnX1.b1': {'variables': ['temperature', 'precipitation'], 'averaging': ['YE', 'ME']},
+        'nsa60noaacrnX1.b1': {'variables': ['temperature', 'precipitation'], 'averaging': ['YE', 'ME']},
         'nsametC1.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['YE', 'ME']},
         #'nsamawsC1.b1': {'variables': ['atmospheric_temperature', 'atmospheric_relative_humidity'], 'averaging': ['YE', 'ME']},
         #'sgpmetE13.b1': {'variables': ['temp_mean', 'rh_mean', 'tbrg_precip_total'], 'averaging': ['YE', 'ME']},

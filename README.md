@@ -29,7 +29,7 @@ Figure 1. Monthly average temperatures from ARM MET (blue), ARM MAWS (green), an
 ![ARM and NOAA Yearly Average Temperatures](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/nsametC1.b1_temp_mean_nsa60noaacrnX1.b1_temperature_YE.png)
 Figure 2. Yearlly average temperatures from ARM MET (blue), ARM MAWS (green) and NOAA (orange).
 
-In visualizing the ARM MET data by month (Fig. 3), the spread in the temperatures over the winter months, espcially in January to March is clearly larger compared with summer months.  Temperatures in February are the most volatile with a standard deviation of 4.4 ºC.  The monthly values can be found in Table 2 and indicate that July 2019 was the warmest (8.1 ºC) on record with 2023 being the second warmest (7.0 ºC).
+In visualizing the ARM MET data by month (Fig. 3), the spread in the temperatures over the winter months, espcially in January to March is clearly larger compared with summer months.  Temperatures in February are the most volatile with a standard deviation of 4.3 ºC.  The monthly values can be found in Table 2 and indicate that July 2019 was the warmest (8.1 ºC) on record with 2023 being the second warmest (7.0 ºC).
 
 ![ARM Monthly Average Temperatures](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/nsametC1.b1_temp_mean_by_month.png)
 Figure 3. Monthly average NSA MET temperatures plotted by month and color-coded by year. Standard deviation for each month is indicated at the bottom of the plot.

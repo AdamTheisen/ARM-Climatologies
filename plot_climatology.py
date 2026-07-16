@@ -20,9 +20,9 @@ import scipy
 ds_dict = {
     #'sgpceil10mC1.b1': {'variables': ['first_cbh'], 'averaging': ['YE', 'M'], 'units': ['m']},
     #'nsaceilC1.b1': {'variables': ['first_cbh'], 'averaging': ['YE', 'ME'], 'units': ['m']},
-    'nsametC1.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['YE', 'ME'], 'units': ['degC', '%']},
-    'nsamawsC1.b1': {'variables': ['atmospheric_temperature', 'atmospheric_relative_humidity'], 'averaging': ['YE', 'ME'], 'units': ['degC', '%']},
-    'nsa60noaacrnX1.b1': {'variables': ['temperature'], 'averaging': ['YE', 'ME'], 'units': ['degC']},
+    #'nsametC1.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['YE', 'ME'], 'units': ['degC', '%']},
+    #'nsamawsC1.b1': {'variables': ['atmospheric_temperature', 'atmospheric_relative_humidity'], 'averaging': ['YE', 'ME'], 'units': ['degC', '%']},
+    'nsa60noaacrnX1.b1': {'variables': ['temperature', 'precipitation'], 'averaging': ['YE', 'ME'], 'units': ['degC', 'mm']},
     'sgpmetE13.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['YE', 'ME'], 'units': ['degC', '%']},
     'sgpmawsC1.b1': {'variables': ['atmospheric_temperature', 'atmospheric_relative_humidity'], 'averaging': ['YE', 'ME'], 'units': ['degC', '%']},
     'enametC1.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['YE', 'ME'], 'units': ['degC', '%']},
