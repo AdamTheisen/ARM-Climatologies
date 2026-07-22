@@ -18,17 +18,17 @@ import scipy
 # Set up the datastream, variable name and averaging interval
 # Averaging interval based on xarray resample (M=Month, Y=Year)
 ds_dict = {
-    #'sgpceil10mC1.b1': {'variables': ['first_cbh'], 'averaging': ['YE', 'M'], 'units': ['m']},
-    #'nsaceilC1.b1': {'variables': ['first_cbh'], 'averaging': ['YE', 'ME'], 'units': ['m']},
-    #'nsametC1.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['YE', 'ME'], 'units': ['degC', '%']},
-    #'nsamawsC1.b1': {'variables': ['atmospheric_temperature', 'atmospheric_relative_humidity'], 'averaging': ['YE', 'ME'], 'units': ['degC', '%']},
-    'nsa60noaacrnX1.b1': {'variables': ['temperature', 'precipitation'], 'averaging': ['YE', 'ME'], 'units': ['degC', 'mm']},
-    'sgpmetE13.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['YE', 'ME'], 'units': ['degC', '%']},
-    'sgpmawsC1.b1': {'variables': ['atmospheric_temperature', 'atmospheric_relative_humidity'], 'averaging': ['YE', 'ME'], 'units': ['degC', '%']},
-    'enametC1.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['YE', 'ME'], 'units': ['degC', '%']},
-    'enamawsC1.b1': {'variables': ['atmospheric_temperature', 'atmospheric_relative_humidity'], 'averaging': ['YE', 'ME'], 'units': ['degC', '%']},
+    #'sgpceil10mC1.b1': {'variables': ['first_cbh'], 'averaging': ['YS', 'M'], 'units': ['m']},
+    #'nsaceilC1.b1': {'variables': ['first_cbh'], 'averaging': ['YS', 'MS'], 'units': ['m']},
+    'nsametC1.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['YS', 'MS'], 'units': ['degC', '%']},
+    'nsamawsC1.b1': {'variables': ['atmospheric_temperature', 'atmospheric_relative_humidity'], 'averaging': ['YS', 'MS'], 'units': ['degC', '%']},
+    'nsa60noaacrnX1.b1': {'variables': ['temperature', 'precipitation'], 'averaging': ['YS', 'MS'], 'units': ['degC', 'mm']},
+    'sgpmetE13.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['YS', 'MS'], 'units': ['degC', '%']},
+    'sgpmawsC1.b1': {'variables': ['atmospheric_temperature', 'atmospheric_relative_humidity'], 'averaging': ['YS', 'MS'], 'units': ['degC', '%']},
+    'enametC1.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['YS', 'MS'], 'units': ['degC', '%']},
+    'enamawsC1.b1': {'variables': ['atmospheric_temperature', 'atmospheric_relative_humidity'], 'averaging': ['YS', 'MS'], 'units': ['degC', '%']},
     #'sgp30ecorE14.b1': {'variables': ['fc', 'h', 'lv_e', 'k'], 'averaging': ['Y', 'M'], 'units':['W/m^2', 'W/m^2', 'kg/(m s^2)', 'umol/(s m^2)']},
-    #'sgptsiskycoverC1.b1': {'variables': ['percent_opaque', 'percent_thin'], 'averaging': ['YE', 'M'], 'units': ['%', '%']},
+    #'sgptsiskycoverC1.b1': {'variables': ['percent_opaque', 'percent_thin'], 'averaging': ['YS', 'M'], 'units': ['%', '%']},
     #'nsatsiskycoverC1.b1': {'variables': ['percent_opaque', 'percent_thin'], 'averaging': ['Y', 'M'], 'units': ['%', '%']},
 
 }
@@ -42,14 +42,14 @@ for ds in ds_dict:
             print(ds, variable, averaging)
             filename = './results/' + ds + '_' + variable + '_' + averaging + '.csv'
             names = ['time', 'mean', 'n_samples', 'min', 'max', 'std_dev', 'standard_error']
-            obj = act.io.read_csv(filename, column_names=names, index_col=0, parse_dates=['time'])
+            obj = act.io.read_csv(filename, column_names=names, index_col=0, parse_dates=['time'], date_format="%Y-%m-%dT%H:%M:%S", header=0)
             # Set Up Plot
             display = act.plotting.TimeSeriesDisplay(obj, figsize=(10,5))
             if averaging == 'M':
                 title = 'Monthly Averages of ' + variable + ' in '+ ds
                 #if 'nsa60noaa' in ds:
                 #    title = 'Monthly Total of Precipitation in ' + ds
-            if averaging == 'Y' or averaging == 'YE':
+            if averaging == 'Y' or averaging == 'YS':
                 title = 'Yearly Averages of ' + variable + ' in '+ ds
                 #if 'nsa60noaa' in ds:
                 #    title = 'Yearly Total of Precipitation in ' + ds
@@ -67,7 +67,7 @@ for ds in ds_dict:
 
             # Highlight samples that have less than 28 days worth of samples for monthly
             # and less than 334 days for yearly averages
-            if averaging == 'M' or averaging == 'ME':
+            if averaging == 'M' or averaging == 'MS':
                 idx = np.where(obj['n_samples'] < 25 * 24 * 60)
                 text = 'Black Dots = < 25 days used in average'
                 if '60noaa' in ds:
@@ -81,7 +81,7 @@ for ds in ds_dict:
                 plt.text(1.0, -0.1, text, transform=display.axes[0].transAxes, fontsize=7,
                          horizontalalignment='right')
                 myFmt = mdates.DateFormatter('%b %Y')
-            if averaging == 'Y' or averaging == 'YE':
+            if averaging == 'Y' or averaging == 'YS':
                 idx = np.where(obj['n_samples'] < 334 * 24 * 60)
                 text = 'Black Dots = < 334 days used in average'
                 if '60noaa' in ds:

@@ -26,7 +26,7 @@ for ds in ds_dict:
         for averaging in ds_dict[ds]['averaging']:
             filename = './results/' + ds + '_' + variable + '_' + averaging + '.csv'
             names = ['time', 'mean', 'n_samples', 'min', 'max', 'std_dev', 'standard_error']
-            obj = act.io.read_csv(filename, column_names=names, index_col=0, parse_dates=['time'])
+            obj = act.io.read_csv(filename, column_names=names, index_col=0, parse_dates=['time'], date_format="%Y-%m-%dT%H:%M:%S", header=0)
 
             # Set Up Plot
             if averaging == 'M':
