@@ -23,10 +23,10 @@ Table 1. Minimum, maximum, and delta thresholds for each fixed site based on the
 The NSA monthly temperatures from both the ARM and NOAA (NOOA Climate Reference Network) sites (Fig. 1) show a notable period from 2014-2019 where the average temperatures over the winter were higher as compared to the data from 2005-2013.   In both datasets, there was a significant decrease in the monthly averages during the 2019-2020 winter followed by increase in subsequent years.  As shown in Figure 1, the agreement between the ARM and NOAA monthly averages validates that the ARM and NOAA temperature records are consistent and the slight deviations that are present are due to missing periods of data (black circles, triangles, and squares). Yearly averaged temperature are likewise, very similar as shown in Figure 2.  As noted, the increase in temperatures from 2014-2019 is visible in the yearly averages with a decrease in temperatures over 2020-2021.  Due to quality issues with the ARM MET and NOAA data in 2021, data from the ARM Automatic Weather Station (MAWS) was incorporated into the analysis.  Data for these periods can be found in the [results](https://github.com/AdamTheisen/ARM-Climatologies/tree/main/results) area of this repository.
 
 
-![ARM and NOAA Monthly Average Temperatures](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/nsametC1.b1_temp_mean_nsa60noaacrnX1.b1_temperature_ME.png)
+![ARM and NOAA Monthly Average Temperatures](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/nsametC1.b1_temp_mean_nsa60noaacrnX1.b1_temperature_MS.png)
 Figure 1. Monthly average temperatures from ARM MET (blue), ARM MAWS (green), and NOAA (orange).
 
-![ARM and NOAA Yearly Average Temperatures](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/nsametC1.b1_temp_mean_nsa60noaacrnX1.b1_temperature_YE.png)
+![ARM and NOAA Yearly Average Temperatures](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/nsametC1.b1_temp_mean_nsa60noaacrnX1.b1_temperature_YS.png)
 Figure 2. Yearlly average temperatures from ARM MET (blue), ARM MAWS (green) and NOAA (orange).
 
 In visualizing the ARM MET data by month (Fig. 3), the spread in the temperatures over the winter months, espcially in January to March is clearly larger compared with summer months.  Temperatures in February are the most volatile with a standard deviation of 4.3 ºC.  The monthly values can be found in Table 2 and indicate that July 2019 was the warmest (8.1 ºC) on record with 2023 being the second warmest (7.0 ºC).
@@ -40,26 +40,26 @@ Table 2. ARM monthly average temperatures.
 #### Precipitation
 There has been a lack of reliable precipitation measurements at the ARM NSA site.  A total precipitation sensor (TPS; Hotplate) was deployed from 2006-2014 but the quality of the measurements is unknown.  The ARM MET system also had a present weather detector deployed but generally thos have not been reliable in frozen precipitation.  More recently (Spring 2017), two Thies laser precipitation monitor, two FlowCapt solid particle mass flux sensors and an array of sonic snow depth sensors have been deployed at the NSA site with more instrumentation soon to be deployed at a new extended facility, NSA E12.  The NOAA facility did have a rain gauge deployed (Fig. 4) as part of the U.S. Climate Reference Network which shows a general increase in precipitation from 2017-2019 before decreasing in 2020 only to start increasing again in subsequent years.  These increases coinciding with the warmer average temperatures which are expected as it is a non-heated rain gauge according to available documentation.  There is likely also some erroneous data in 2004 which should be ignored.  Monthly totals (Fig. 5) generally show minimal precipitation during the winter months as expected with a non-heated tipping bucket rain gauge but outside of a few cases, no single month has recieved more than 50 mm of precipitation.  More efforts to verify these totals with more recent ARM measurements and to investigate snow fall climatologies at the NSA site will happen in the future.
 
-![ARM Yearly Precipitation Totals](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/nsa60noaacrnX1.b1_precipitation_YE.png)
+![ARM Yearly Precipitation Totals](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/nsa60noaacrnX1.b1_precipitation_YS.png)
 Figure 4. Yearly total precipitation from the NOAA rain gauge.
 
-![ARM Monthly Precipitation Totals](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/nsa60noaacrnX1.b1_precipitation_ME.png)
+![ARM Monthly Precipitation Totals](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/nsa60noaacrnX1.b1_precipitation_MS.png)
 Figure 5. Monthly total precipitation from the NOAA rain gauge.
 
 ### Southern Great Plains
 #### Temperature
 Yearly average temperatures at the SGP have ranged between 13 ºC and 17 ºC (Fig. 6).  Earlier portions of the record do show pronounced peaks and valleys whereas the more recent data (2015 onwards), does not show nearly as much variability.  Monthly average temperatures (Fig. 7) do show some abnormally hot summer peaks, in more recent years, it's the winters that have been more noticeably trending warmer.  Data from the MAWS was also incorporated into this analysis.  However, data from 2014-2015 do not have enough samples to provide a valid average and 2016-2017 appear to be biased high.  These results are being further analyzed.  Results from both systems do show that 2024 was a record high-temperature for SGP.  Only half of the year was used for the avreage in 2002.
 
-![SGP Yearly Average Temperatures](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/sgpmetE13.b1_temp_mean_sgpmawsC1.b1_atmospheric_temperature_YE.png)
+![SGP Yearly Average Temperatures](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/sgpmetE13.b1_temp_mean_sgpmawsC1.b1_atmospheric_temperature_YS.png)
 Figure 6. SGP yearly average temperature.
 
-![SGP Monthly Average Temperatures](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/sgpmetE13.b1_temp_mean_sgpmawsC1.b1_atmospheric_temperature_ME.png)
+![SGP Monthly Average Temperatures](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/sgpmetE13.b1_temp_mean_sgpmawsC1.b1_atmospheric_temperature_MS.png)
 Figure 7. SGP monthly average temperature.
 
 #### Precipitation
 As with temperature, the total precipitation has been more stable in recent years (Fig. 8).  Previously, the lower precip totals have been associated with the higher average yearly temperature peaks in 2006 and 2012.  The generaly trends in precipitation are expected with increasing precipitation in the spring (AMJ) (Fig. 9).
 
-![SGP Yearly Total Precipitation](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/sgpmetE13.b1_tbrg_precip_total_YE.png)
+![SGP Yearly Total Precipitation](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/sgpmetE13.b1_tbrg_precip_total_YS.png)
 Figure 8. SGP yearly total precipitation.
 
 ![SGP Precipitation Totals by Month](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/sgpmetE13.b1_tbrg_precip_total_by_month.png)
