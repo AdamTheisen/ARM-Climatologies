@@ -5,7 +5,7 @@ import xarray as xr
 from xarray.coding.times import encode_cf_datetime
 import json
 
-dirs = glob.glob('/Users/atheisen/Code/ARM-Climatologies/data/*enamet*')
+dirs = glob.glob('/Users/atheisen/Code/ARM-Climatologies/data/*')
 dirs.sort()
 for d in dirs:
     files = glob.glob(d + '/*')
@@ -18,7 +18,7 @@ for d in dirs:
         concat_dim='time',
         join='outer',
         data_vars='all',
-        parallel=True,
+        parallel=False,
         chunks={}
     )
     end_time = time.perf_counter()

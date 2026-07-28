@@ -21,7 +21,7 @@ ds = 'sgpmetE13.b1'
 #averaging = 'M'
 #units = 'mm'
 variable = 'temp_mean'
-averaging = 'ME'
+averaging = 'MS'
 units = 'degC'
 
 #ds = 'sgpceil10mC1.b1'

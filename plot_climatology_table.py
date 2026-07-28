@@ -16,9 +16,9 @@ import xarray as xr
 
 
 ds_dict = {
-        'nsametC1.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['ME']},
-        'nsa60noaacrnX1.b1': {'variables': ['temperature', 'precipitation'], 'averaging': ['ME'],},
-        'sgpmetE13.b1': {'variables': ['temp_mean', 'rh_mean', 'tbrg_precip_total'], 'averaging': ['ME']},
+        'nsametC1.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['MS']},
+        'nsa60noaacrnX1.b1': {'variables': ['temperature', 'precipitation'], 'averaging': ['MS'],},
+        'sgpmetE13.b1': {'variables': ['temp_mean', 'rh_mean', 'tbrg_precip_total'], 'averaging': ['MS']},
 }
 
 for ds in ds_dict:
