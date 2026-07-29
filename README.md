@@ -17,6 +17,16 @@ Table 1. Minimum, maximum, and delta thresholds for each fixed site based on the
 | NSA  | -60 ºC  | 30 ºC   | 10 ºC |
 | ENA  |   5 ºC  | 30 ºC   | 20 ºC |
 
+## Software
+The most recent iteration of the processing chain was updated to filter data based on DQRs and embedded QC and convert the over 40,000 NetCDF files to analysis-ready cloud optimized Zarr data stores.  This has greatly streamlined the processing and improves the time in which new analysis can be performed.  A second script is then run to read in the Zarr data stores and calculate monthly and yearly statistics, which are included in this repository.  Finally, multiple scripts are available to create plots for each of the sites and measurements included in the analysis. The commands are as follows:
+```
+python convert_to_zarr.py
+python zarr_arm_climatology.py
+python plot_climatology.py
+python plot_climatology_comp.py
+python plot_climatology_by_month.py
+python plot_climatology_table.py
+```
 ## Results
 ### North Slope of Alaska
 #### Temperature
