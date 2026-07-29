@@ -75,6 +75,19 @@ Figure 8. SGP yearly total precipitation.
 ![SGP Precipitation Totals by Month](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/sgpmetE13.b1_tbrg_precip_total_by_month.png)
 Figure 9. SGP precipitation totals by month.
 
+### Eastern North Atlantic
+#### Temperature
+Temperatures at ENA have seen more variability in recent years (2018-2025) compared to the intial record (Fig. 8).  The MET instrument has had significant problems, resulting in much of the data being filtered out from 2018-onward.  It was known that the MET suffered from increased noise as compared to the MAWS system.  The MAWS system should be considered a suitable stand-in for the periods the MET is problematic.
+
+Figure 9 shows the monthly average temperature with the summer of 2024 being the hottest on record with 2025 more in line with previous years.
+
+![ENA Yearly Average Temperatures](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/enametC1.b1_temp_mean_enamawsC1.b1_atmospheric_temperature_YS.png)
+Figure 8. ENA yearly average temperature.
+
+![ENA Monthly Average Temperatures](https://github.com/AdamTheisen/ARM-Climatologies/blob/main/images/enametC1.b1_temp_mean_enamawsC1.b1_atmospheric_temperature_MS.png)
+Figure 9. ENA monthly average temperature.
+
+
 ## Conclusions
 This repository will serve as a single point of reference for ongoing climatology results for the ARM fixed sites.  The analysis will be expanded to the other fixed sites and updated on a yearly basis.  Additional statistics, instruments, and variables will be added as requested and time permits. 
 

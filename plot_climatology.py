@@ -45,7 +45,7 @@ for ds in ds_dict:
             obj = act.io.read_csv(filename, column_names=names, index_col=0, parse_dates=['time'], date_format="%Y-%m-%dT%H:%M:%S", header=0)
             # Set Up Plot
             display = act.plotting.TimeSeriesDisplay(obj, figsize=(10,5))
-            if averaging == 'M':
+            if averaging == 'MS':
                 title = 'Monthly Averages of ' + variable + ' in '+ ds
                 #if 'nsa60noaa' in ds:
                 #    title = 'Monthly Total of Precipitation in ' + ds
