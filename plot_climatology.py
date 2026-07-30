@@ -23,7 +23,7 @@ ds_dict = {
     'nsametC1.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['YS', 'MS'], 'units': ['degC', '%']},
     'nsamawsC1.b1': {'variables': ['atmospheric_temperature', 'atmospheric_relative_humidity'], 'averaging': ['YS', 'MS'], 'units': ['degC', '%']},
     'nsa60noaacrnX1.b1': {'variables': ['temperature', 'precipitation'], 'averaging': ['YS', 'MS'], 'units': ['degC', 'mm']},
-    'sgpmetE13.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['YS', 'MS'], 'units': ['degC', '%']},
+    'sgpmetE13.b1': {'variables': ['temp_mean', 'rh_mean', 'tbrg_precip_total'], 'averaging': ['YS', 'MS'], 'units': ['degC', '%', 'mm']},
     'sgpmawsC1.b1': {'variables': ['atmospheric_temperature', 'atmospheric_relative_humidity'], 'averaging': ['YS', 'MS'], 'units': ['degC', '%']},
     'enametC1.b1': {'variables': ['temp_mean', 'rh_mean'], 'averaging': ['YS', 'MS'], 'units': ['degC', '%']},
     'enamawsC1.b1': {'variables': ['atmospheric_temperature', 'atmospheric_relative_humidity'], 'averaging': ['YS', 'MS'], 'units': ['degC', '%']},
